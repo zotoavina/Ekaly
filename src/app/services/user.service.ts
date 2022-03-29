@@ -17,4 +17,15 @@ export class UserService {
   }
 
 
+  login(userData : any){
+    return this.httpClient.post(this.url.concat("/user/login"), userData);
+  }
+
+  insert(user : any){
+    return this.httpClient.post(this.url.concat("/user"), user);
+  }
+
+
+
+
 }
