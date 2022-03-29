@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { environment } from 'src/environments/environment';
+import { baseUrl } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,11 +9,11 @@ import { environment } from 'src/environments/environment';
 
 
 export class UserService {
-   url = environment.baseUrl;
+   url = baseUrl.value
   constructor(private httpClient: HttpClient) { }
 
   getAllUser(){
-    return this.httpClient.get(this.url.concat("/api/user/all"));
+    return this.httpClient.get(this.url.concat("/user/all"));
   }
 
 
