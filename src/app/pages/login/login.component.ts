@@ -7,12 +7,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isLogin: boolean = true;
+  option ='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}]}'
 
   constructor(private userServ: UserService) { }
 
   ngOnInit(): void {
     console.log("initialisation");
-    this.login();
+    // this.login();
   }
 
   getAllUser(){
@@ -41,6 +43,10 @@ export class LoginComponent implements OnInit {
     this.userServ.login(credentials).subscribe( response => {
       console.log(response);
     })
+  }
+
+  changeState(): void{
+    this.isLogin = !this.isLogin;
   }
 
 
