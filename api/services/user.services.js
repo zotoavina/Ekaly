@@ -1,9 +1,9 @@
-const response = require('response.services');
+const response = require('./response.services');
 module.exports = {
   login : function(req, res, db){
     db.collection('profil').findOne(req.body, (error, result) => {
       if (error) throw error;
-      console.log(result);
+      if(result == null) response.error(res, "Mot de passe ou email non valide");
       response.success( res, result, "Login success");
     });
   },
@@ -18,7 +18,7 @@ module.exports = {
   addUser : function(req, res, db){
     db.collection('profil').insertOne( req.body, (error, result) => {
       if (error) throw error;
-      res.json(result);
+      response.success( res, null, "Inscription success");
     })
   }
 
