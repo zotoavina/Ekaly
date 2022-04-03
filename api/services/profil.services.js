@@ -3,9 +3,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('../helpers/jwt.helper');
 
 async function login({ email, password }) {
-  const user = await Profil.findOne({email});
-  console.log(user);
-  if(bcrypt.compareSync(password, user.password)){
+  const profil = await Profil.findOne({email});
+  console.log(profil);
+  if(bcrypt.compareSync(password, profil.password)){
       const token = jwt.generateAccessToken(email);
       return {...profil.toJSON(), token}
   }

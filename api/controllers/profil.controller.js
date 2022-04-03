@@ -5,7 +5,9 @@ const profilController = (url , router) => {
 
   router.post( `${url}/login`, (req, res) =>{
     const credentials = req.body;
-     profilService.login(credentials);
+     profilService.login(credentials).then(
+       (profil) => response.success(res, profil, "Log in success")
+     )
   } );
 
   router.post( `${url}`, (req, res) => {
