@@ -1,14 +1,15 @@
-<!-- <div id="preloader" class="preloader">
+<!-- <div id="preloader" class="preloader" *ngIf="load" (click)="stopLoading()">
     <div class='inner'>
         <div class='line1'></div>
         <div class='line2'></div>
         <div class='line3'></div>
     </div>
 </div> -->
+
 <section class="fxt-template-animation fxt-template-layout29">
     <div class="container-fluid">
         <div class="row">
-            <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide">
+            <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide" data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "./assets/img/3.jpg"}, {"src": "./assets/img/3.jpg"}, {"src": "./assets/img/3.jpg"}]}'>
               <img src="./assets/img/3.jpg"/>
               <div class="fxt-page-switcher">
                     <a  class="switcher-text1 active" (click)="changeState()">Login</a>

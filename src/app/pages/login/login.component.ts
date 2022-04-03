@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   isLogin: boolean = true;
+  load: boolean = true;
   option ='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}]}'
 
   constructor(private userServ: UserService) { }
@@ -15,6 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     console.log("initialisation");
     // this.login();
+  }
+
+  stopLoading(){
+    this.load = false;
   }
 
   getAllUser(){
