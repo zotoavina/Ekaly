@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
 import { DefaultLayoutComponent } from './pages/common/default-layout/default-layout.component';
 import { MenuListComponent } from './pages/common/menu-list/menu-list.component';
 import { RestaurantListComponent } from './pages/common/restaurant-list/restaurant-list.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path:'plats',
         component: MenuListComponent
+      },
+      {
+        path:'users/cart',
+        component: ShoppingCartComponent
       }
     ]
   }
