@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,9 +10,25 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   isLogin: boolean = true;
   load: boolean = true;
-  option ='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}, {"src": "./assets/img/4.jpg"}]}'
+  inscriptionForm : FormGroup;
+  loginForm : FormGroup;
 
-  constructor(private userServ: UserService) { }
+  constructor(private userServ: UserService, private formBuilder : FormBuilder) {
+    this.inscriptionForm = formBuilder.group({
+      firstName:["Rasoaharisoa", Validators.required],
+      lastName:["Zotoavina",Validators.required],
+      email:["zotoavinanantenaina@gmail.com",Validators.required],
+      address:["K04 052 BIS Ivato Aéroport", Validators.required],
+      phoneNumber:["0328818232", Validators.required],
+      password:["123456", Validators.required]
+    });
+
+    this.loginForm = formBuilder.group({
+      email : ["zotoavinanantenaina@gmail.com", Validators.required],
+      password: ["123456", Validators.required]
+    });
+
+   }
 
   ngOnInit(): void {
     console.log("initialisation");
@@ -30,11 +47,13 @@ export class LoginComponent implements OnInit {
 
   inscription(){
     const user = {
-      firstname :"Rasoaharisoa",
-      lastname:"Nantenaina",
-      email:"zotoavinanantenaina@gmail.com",
-      password:"123456"
+      firstname : this.inscriptionForm.get("firstName")?.value,
+      lastname: this.inscriptionForm.get("lastName")?.value,
+      email: this.inscriptionForm.get("email")?.value,
+      phonenumber: this.inscriptionForm.get("phoneNumber")?.value,
+      password: this.inscriptionForm.get("password")?.value
     };
+    console.log(user);
     this.userServ.insert(user).subscribe( response => {
       console.log(response);
     });
@@ -42,18 +61,19 @@ export class LoginComponent implements OnInit {
 
   login(){
     const credentials = {
-      email:"zotoavinanantenaina@gmail.com",
-      password:"123456"
+      email: this.loginForm.get("email")?.value,
+      password: this.loginForm.get("password")?.value
     };
+    console.log(credentials);
     this.userServ.login(credentials).subscribe( response => {
       console.log(response);
     })
   }
 
+
+
   changeState(): void{
     this.isLogin = !this.isLogin;
   }
-
-
 
 }
