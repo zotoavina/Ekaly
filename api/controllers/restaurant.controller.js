@@ -7,6 +7,8 @@ const restaurantController = ( url ,router ) => {
       (restaurants) => response.success(res, restaurants, "Restaurants selected")
       );
   })
+
+  router.post(url, )
 }
 
 
