@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DefaultLayoutComponent } from './pages/common/default-layout/default-layout.component';
 import { RestaurantListComponent } from './pages/common/restaurant-list/restaurant-list.component';
 import { MenuListComponent } from './pages/common/menu-list/menu-list.component';
+import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MenuListComponent } from './pages/common/menu-list/menu-list.component'
     LoginComponent,
     DefaultLayoutComponent,
     RestaurantListComponent,
-    MenuListComponent
+    MenuListComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
