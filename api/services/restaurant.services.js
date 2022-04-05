@@ -2,7 +2,7 @@ const profilService = require('./profil.services');
 
 
 async function findRestaurants(){
-  return profilService.findAllByType("Restaurant").toJSON();
+  return profilService.findAllByType("restaurant");
 }
 
 

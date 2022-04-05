@@ -8,3 +8,6 @@ const restaurantController = ( url ,router ) => {
       );
   })
 }
+
+
+module.exports = restaurantController;
