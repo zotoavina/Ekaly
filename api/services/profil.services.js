@@ -21,14 +21,25 @@ async function register(params){
 }
 
 async function getById(id) {
-
   const user = await Profil.findById(id);
   // call toJSON method applied during model instantiation
   return user.toJSON()
 }
 
+async function updateProfil(profil){
+  await Profil.updateOne(profil);
+}
+
+async function findAllByType(type){
+  return await Profil.find({type})
+}
+
+
+
 module.exports = {
   login,
   register,
-  getById
+  getById,
+  updateProfil,
+  findAllByType
 };
