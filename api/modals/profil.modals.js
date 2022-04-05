@@ -22,6 +22,14 @@ const ProfilSchema = new Schema({
     phonenumber: {
       type: String,
       required: false,
+    },
+    plats:{
+      type: Array,
+      require: false
+    },
+    type:{
+      type: String,
+      required: true
     }
 });
 

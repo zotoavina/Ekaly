@@ -1,6 +1,5 @@
 const { app } = require('./modules/app/app.module');
 const mongoose = require('mongoose');
-const userRouter = require('./modules/router/user/user.route');
 const profilController = require('./controllers/profil.controller');
 
 

@@ -13,7 +13,7 @@ const profilController = (url , router) => {
   router.post( `${url}`, (req, res) => {
     profilService.register(req.body).then(
       () => response.success(res, null, "Registration success")
-    ).catch( err => next(err) );
+    ).catch( err => response.error(res, "Error during registration") );
   })
 
 }
