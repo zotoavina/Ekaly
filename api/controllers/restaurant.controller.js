@@ -8,7 +8,13 @@ const restaurantController = ( url ,router ) => {
       );
   })
 
-  router.post(url, )
+  router.post(`${url}/addPlat`, (req, res) => {
+    var restaurant = req.body;
+    var files = req.files;
+    restaurant.plat = JSON.parse(restaurant.plat);
+    console.log(restaurant);
+    restaurantService.addPlates(restaurant, files).then( (restaurant) => response.success(res, restaurant, "Add plat success")  );
+  })
 }
 
 

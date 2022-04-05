@@ -21,9 +21,7 @@ async function register(params){
 }
 
 async function getById(id) {
-  const user = await Profil.findById(id);
-  // call toJSON method applied during model instantiation
-  return user.toJSON()
+  return await Profil.findById(id);
 }
 
 async function updateProfil(profil){
