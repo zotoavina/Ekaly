@@ -8,7 +8,6 @@ async function findRestaurants(){
 
 async function addPlates(restaurant, files){
   profilService.getById(restaurant.id).then( resto => {
-    console.log(resto);
     fileHelper.uploadFile(files);
     console.log(resto);
     resto.plats.push(restaurant.plat);
