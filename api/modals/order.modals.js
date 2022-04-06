@@ -38,7 +38,3 @@ module.exports = {
   Order,
   OrderSchema
 }
-
-
-
-
