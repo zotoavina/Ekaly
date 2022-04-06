@@ -1,4 +1,4 @@
-const Profil = require('../modals/profil.modals');
+const { Profil, ProfilSchema } = require('../modals/profil.modals');
 const bcrypt = require('bcryptjs');
 const jwt = require('../helpers/jwt.helper');
 

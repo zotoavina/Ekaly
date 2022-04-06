@@ -1,24 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const plat = require("./plat.modals");
 
-const plat = new Schema({
-  designation:{
-    type: String,
-    required: true
-  },
-  avatar:{
-    type: String,
-    required: false,
-  },
-  sellprice:{
-    type: Number,
-    required: true
-  },
-  buyprice:{
-    type:Number,
-    required: true
-  }
-});
 
 const ProfilSchema = new Schema({
     firstname: {
@@ -61,4 +44,7 @@ ProfilSchema.set('toJSON', {
 
 const Profil =  mongoose.model("profil", ProfilSchema);
 
-module.exports = Profil;
+module.exports = {
+  Profil,
+  ProfilSchema
+};
