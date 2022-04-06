@@ -1,6 +1,25 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const plat = new Schema({
+  designation:{
+    type: String,
+    required: true
+  },
+  avatar:{
+    type: String,
+    required: false,
+  },
+  sellprice:{
+    type: Number,
+    required: true
+  },
+  buyprice:{
+    type:Number,
+    required: true
+  }
+});
+
 const ProfilSchema = new Schema({
     firstname: {
         type: String,
@@ -23,10 +42,7 @@ const ProfilSchema = new Schema({
       type: String,
       required: false,
     },
-    plats:{
-      type: Array,
-      require: false
-    },
+    plats: [ plat ],
     type:{
       type: String,
       required: true
