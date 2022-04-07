@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const {Profil, ProfilSchema} = require("./profil.modals");
 const PlatSchema = require("./plat.modals");
 
-const OrderSchema = new Schema({
+const OrderItemSchema = new Schema({
   plat : PlatSchema,
   quantity: {
     type: Number,
@@ -15,7 +15,7 @@ const OrderSchema = new Schema({
   client : ProfilSchema,
   restoPlat : {
     resto: ProfilSchema,
-    plats: [ OrderSchema ]
+    plats: [ OrderItemSchema ]
   },
   totalPrice : {
     type: Number,
@@ -32,9 +32,9 @@ OrderSchema.set('toJSON', {
   }
 })
 
-const Order =  mongoose.model("order", ProfilSchema);
+const Order =  mongoose.model("order", OrderSchema);
 
 module.exports = {
   Order,
   OrderSchema
-}
+};

@@ -10,26 +10,54 @@ const ProfilSchema = new Schema({
     },
     lastname:{
       type: String,
-      required: false,
+      required: false
     },
     email: {
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
     },
     phonenumber: {
       type: String,
-      required: false,
+      required: false
     },
     plats: [ plat ],
     type:{
       type: String,
       required: true
     }
+},  { shardkey :{ email : 1} });
+
+const ProfilBean = new Schema({
+  firstname: {
+    type: String,
+    required: false,
+  },
+  lastname:{
+    type: String,
+    required: false,
+  },
+  email: {
+      type: String,
+      required: false
+  },
+  password: {
+      type: String,
+      required: false,
+  },
+  phonenumber: {
+    type: String,
+    required: false,
+  },
+  plats: [ plat ],
+  type:{
+    type: String,
+    required: true
+  }
 });
 
 ProfilSchema.set('toJSON', {
