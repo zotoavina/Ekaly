@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { baseUrl } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { ResponseData } from '../models/response-data';
 
 
 @Injectable({
@@ -17,8 +19,8 @@ export class UserService {
   }
 
 
-  login(userData : any){
-    return this.httpClient.post(this.url.concat("/user/login"), userData);
+  login(userData : any): Observable<ResponseData>{
+    return this.httpClient.post<ResponseData>(this.url.concat("/user/login"), userData);
   }
 
   insert(user : any){
