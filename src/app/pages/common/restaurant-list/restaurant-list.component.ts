@@ -1,6 +1,7 @@
 import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { UrlService } from 'src/app/services/url.service';
@@ -13,13 +14,19 @@ import { UrlService } from 'src/app/services/url.service';
 export class RestaurantListComponent implements OnInit {
   spinActive : boolean = true;
   restaurants: any;
-  currentResto: any;
+  currentResto !: Profil;
   restoForm: FormGroup;
 
   constructor(private restaurantServ: RestaurantService,
      private urlServ: UrlService,
      private formBuilder: FormBuilder) {
-       this.restoForm = formBuilder.group({})
+       this.restoForm = formBuilder.group({
+         firstname: ["", Validators.required],
+         email:["", Validators.required],
+         phonenumber:["", Validators.required],
+         password:["", Validators.required],
+         avatar: ["", Validators.required]
+       })
      }
 
   ngOnInit(): void {
