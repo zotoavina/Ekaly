@@ -10,8 +10,8 @@ export class UrlService {
 
   constructor() { }
 
-  apiUrl(url: string, basic : boolean = false){
-    return (basic)? this.api.concat(url) : this.base.concat(url) ;
+  apiUrl(url: string, isApi : boolean = true){
+    return (isApi)? this.api.concat(url) : this.base.concat(url) ;
   }
 
 }

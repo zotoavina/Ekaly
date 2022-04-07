@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { UrlService } from 'src/app/services/url.service';
 
 @Component({
@@ -16,10 +17,17 @@ export class RestaurantListComponent implements OnInit {
   restaurants: any;
   currentResto !: Profil;
   restoForm: FormGroup;
+  userConnected !: Profil;
+  clientType !: Boolean;
+  restoData : FormData = new FormData();
+  fileName : string = "Choose an image";
 
-  constructor(private restaurantServ: RestaurantService,
+  constructor(
+     private restaurantServ: RestaurantService,
      private urlServ: UrlService,
-     private formBuilder: FormBuilder) {
+     private formBuilder: FormBuilder,
+     private storageServ: StorageService
+     ) {
        this.restoForm = formBuilder.group({
          firstname: ["", Validators.required],
          email:["", Validators.required],
@@ -30,6 +38,7 @@ export class RestaurantListComponent implements OnInit {
      }
 
   ngOnInit(): void {
+    this.getConnectedUser();
     this.getRestaurants();
   }
 
@@ -39,15 +48,29 @@ export class RestaurantListComponent implements OnInit {
           this.restaurants = response.data;
           console.log(this.restaurants);
           this.restaurants.forEach( (element:any) => {
-            element.avatar = this.urlServ.apiUrl(element.avatar);
+            element.avatar = this.urlServ.apiUrl(element.avatar, false);
           });
           console.log(this.restaurants);
-          // this.spinActive = false;
+          this.spinActive = false;
         }
     })
   }
 
-  addRestaurant(){}
+  getConnectedUser(){
+    this.userConnected = this.storageServ.getStorage("profil");
+    console.log(this.userConnected);
+    this.clientType = this.userConnected.type === "client";
+  }
+
+  addRestaurant(){
+    var resto = this.restoForm.value;
+    resto.type = "restaurant";
+    resto.plats = [];
+    this.restoData.append("restaurant", JSON.stringify(resto));
+    this.restaurantServ.insertRestaurant(this.restoData).subscribe( (response) => {
+      console.log(response);
+    })
+  }
 
   initiateForm(){}
 
@@ -56,6 +79,15 @@ export class RestaurantListComponent implements OnInit {
   }
 
   confirmDelete(resto: any){}
+
+  selectFile(event: any){
+    const files = event.target.files;
+    if(files && files.length > 0){
+      this.restoData.append("avatar", files[0]);
+      console.log(files[0]);
+      this.fileName = files[0].name;
+    }
+  }
 
 
 

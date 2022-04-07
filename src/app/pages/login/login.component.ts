@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ResponseData } from 'src/app/models/response-data';
+import { StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,12 @@ export class LoginComponent implements OnInit {
   inscriptionForm : FormGroup;
   loginForm : FormGroup;
 
-  constructor(private userServ: UserService, private formBuilder : FormBuilder, private router: Router) {
+  constructor(
+    private userServ: UserService,
+    private formBuilder : FormBuilder,
+    private router: Router,
+    private stroageServ: StorageService
+    ) {
     this.inscriptionForm = formBuilder.group({
       firstName:["Rasoaharisoa", Validators.required],
       lastName:["Zotoavina",Validators.required],
@@ -69,6 +75,8 @@ export class LoginComponent implements OnInit {
     console.log(credentials);
     this.userServ.login(credentials).subscribe( (response: ResponseData) => {
       if(response.code == 202){
+        console.log(response);
+        this.stroageServ.setStorage("profil", response.data);
         console.log("Redirection");
         this.router.navigateByUrl('/ekaly/app/restaurants');
       }

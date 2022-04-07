@@ -1,6 +1,6 @@
 export class Profil {
   id: string;
-  type: number | 0;
+  type: string;
   firstname ?: string;
   lastname ?: string;
   email: string;
@@ -12,7 +12,7 @@ export class Profil {
 
   constructor(
     id: string,
-    type: number,
+    type: string,
     email: string,
     password: string,
     firstname ?: string,
@@ -28,5 +28,9 @@ export class Profil {
     this.lastname = lastname;
     this.phonenumber = phonenumber;
     this.avatar = avatar;
+  }
+
+  checkProfil(profil: string): boolean{
+    return this.type == profil;
   }
 }
