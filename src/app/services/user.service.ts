@@ -11,20 +11,20 @@ import { ResponseData } from '../models/response-data';
 
 
 export class UserService {
-   url = baseUrl.value
+   private url = baseUrl.api
   constructor(private httpClient: HttpClient) { }
 
   getAllUser(){
-    return this.httpClient.get(this.url.concat("/user/all"));
+    return this.httpClient.get(this.url.concat("user/all"));
   }
 
 
   login(userData : any): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.url.concat("/user/login"), userData);
+    return this.httpClient.post<ResponseData>(this.url.concat("user/login"), userData);
   }
 
   insert(user : any){
-    return this.httpClient.post(this.url.concat("/user"), user);
+    return this.httpClient.post(this.url.concat("user"), user);
   }
 
 

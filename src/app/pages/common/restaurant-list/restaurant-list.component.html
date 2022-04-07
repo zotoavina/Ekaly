@@ -1,4 +1,20 @@
-	<!-- TEAM-1
+
+		<!-- PRELOADER SPINNER
+		============================================= -->
+		<div id="loader-wrapper" *ngIf="spinActive">
+			<div id="loader">
+				<div class="cssload-spinner">
+					<div class="cssload-ball cssload-ball-1"></div>
+					<div class="cssload-ball cssload-ball-2"></div>
+					<div class="cssload-ball cssload-ball-3"></div>
+					<div class="cssload-ball cssload-ball-4"></div>
+				</div>
+			</div>
+		</div>
+		<!-- HEADER-3
+		============================================= -->
+
+<!-- TEAM-1
 			============================================= -->
 			<section id="team-1" class="team-1 wide-60 reviews-section division">
 				<div class="container">
@@ -24,13 +40,13 @@
 
 
 			 				<!-- TEAM MEMBER #1 -->
-							<div class="col-sm-6 col-lg-3">
+							<div class="col-sm-6 col-lg-3" *ngFor="let restaurant of restaurants">
 								<div class="team-member">
 
 									<!-- Team Member Photo -->
 									<div class="team-member-photo">
 
-										<img class="img-fluid" src="./assets/images/team-1.jpg" alt="team-member-foto">
+										<img class="img-fluid" [src]="restaurant.avatar" alt="team-member-foto">
 
 										<!-- Social Icons -->
 										<div class="tm-social clearfix">
@@ -45,8 +61,8 @@
 
 									<!-- Team Member Meta -->
 									<div class="tm-meta">
-										<h5 class="h5-xs">Sam Richardson</h5>
-										<span class="yellow-color">Head chef</span>
+										<h5 class="h5-xs">{{ restaurant.firstname }}</h5>
+										<span class="yellow-color">  </span>
 									</div>
 
 								</div>

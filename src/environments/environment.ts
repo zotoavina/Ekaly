@@ -7,8 +7,10 @@ export const environment = {
 };
 
 export const baseUrl = {
-  value:'http://localhost:3030/api'
+  base:'http://localhost:3030/',
+  api:'http://localhost:3030/api/'
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

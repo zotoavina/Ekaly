@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-async function uploadFile(files){
+function uploadFile(files, path){
   try {
         if(!files) {
             return {
@@ -13,9 +13,10 @@ async function uploadFile(files){
         } else {
             //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
             let avatar = files.avatar;
+            var path = path + avatar.name;
 
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            avatar.mv(process.env.PLAT_IMG + avatar.name);
+            avatar.mv(path);
 
             //send response
             return {
@@ -24,7 +25,8 @@ async function uploadFile(files){
                 data: {
                     name: avatar.name,
                     mimetype: avatar.mimetype,
-                    size: avatar.size
+                    size: avatar.size,
+                    path: path
                 }
             };
         }
