@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 
 const profilService = require('./profil.services');
 const fileHelper = require('../helpers/file.helper');
+const { Profil, ProfilSchema } = require('../modals/profil.modals');
 
 dotenv.config();
 
@@ -46,7 +47,6 @@ async function deletePlat(restaurant){
     console.log(resto);
     profilService.updateProfil(resto);
   })
-
 }
 
 function changePlat(restaurant, platId){
@@ -61,13 +61,18 @@ function changePlat(restaurant, platId){
    }
 }
 
+async function findPlats(){
+  return await Profil.find({type:"restaurant"}, {plats:1});
+}
+
 
 module.exports = {
   findRestaurants,
   addPlates,
   insertRestaurant,
   deleteRestaurant,
-  deletePlat
+  deletePlat,
+  findPlats
 }
 
 

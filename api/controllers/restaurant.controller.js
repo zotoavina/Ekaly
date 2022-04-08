@@ -41,6 +41,12 @@ const restaurantController = ( url ,router ) => {
     )
   })
 
+  router.get(`${url}/search`, (req, res) => {
+    restaurantService.findPlats().then(
+       (plats) => response.success(res, plats, "Plats selected")
+    )
+  })
+
 }
 
 
