@@ -10,6 +10,7 @@ import { DefaultLayoutComponent } from './pages/common/default-layout/default-la
 import { RestaurantListComponent } from './pages/common/restaurant-list/restaurant-list.component';
 import { MenuListComponent } from './pages/restaurant/menu-list/menu-list.component';
 import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
+import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-car
     DefaultLayoutComponent,
     RestaurantListComponent,
     MenuListComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PlatlistComponent
   ],
   imports: [
     BrowserModule,

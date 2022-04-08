@@ -5,6 +5,7 @@ import { DefaultLayoutComponent } from './pages/common/default-layout/default-la
 import { MenuListComponent } from './pages/restaurant/menu-list/menu-list.component';
 import { RestaurantListComponent } from './pages/common/restaurant-list/restaurant-list.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,11 @@ const routes: Routes = [
       },
       {
         path:'restaurants/:id',
-        component: MenuListComponent,
+        component: MenuListComponent
+      },
+      {
+        path:'plats',
+        component: PlatlistComponent
       },
       {
         path:'users/cart',

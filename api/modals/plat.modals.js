@@ -27,6 +27,10 @@
       type: Boolean,
       required: true,
       default: true
+    },
+    parentresto:{
+      type: String,
+      required : false
     }
   });
 

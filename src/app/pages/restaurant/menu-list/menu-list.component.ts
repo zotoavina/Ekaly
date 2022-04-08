@@ -18,8 +18,7 @@ export class MenuListComponent implements OnInit {
 
   restaurant!: Profil;
   plats : Array<Plat> | undefined = [];
-  public plat: Plat =  new Plat("Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
-  currentPlat !: Plat;
+  plat: Plat =  new Plat("Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
   platesForm!: FormGroup;
   connectedUser!: Profil;
   formData : FormData = new FormData();
@@ -92,8 +91,20 @@ export class MenuListComponent implements OnInit {
     this.formData.set("avatar", file[0]);
   }
 
-  confirmDelete(plat: Plat){
+  choosePlatDelete(plat: Plat){
+    console.log(plat);
     this.plat = plat;
+  }
+
+  confirmDelete(){
+    const resto = {
+      "id": this.restaurant.id,
+      "plat": this.plat._id
+    }
+    console.log(resto);
+    this.restaurantServ.deletePlat(resto).subscribe( (response: ResponseData) => {
+      console.log(response);
+    })
   }
 
   setModalStatus(plat: Plat){
@@ -101,6 +112,8 @@ export class MenuListComponent implements OnInit {
     this.plat = plat
     this.setForm();
   }
+
+
 
 
 }

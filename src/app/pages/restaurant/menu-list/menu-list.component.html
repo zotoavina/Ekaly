@@ -1,93 +1,6 @@
 <!-- MENU-8
 			============================================= -->
-<section *ngIf="clientType; else restaurant " id="menu-8" class="wide-70 menu-section division">
-  <div class="container">
-    <!-- TABS NAVIGATION -->
-    <div id="tabs-nav">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <ul class="tabs-1 ico-55 red-tabs clearfix">
-            <!-- TAB-1 LINK -->
-            <li class="tab-link current" data-tab="tab-1">
-              <span class="flaticon-dinner"></span>
-              <h5 class="h5-sm">Pasta</h5>
-            </li>
-            <!-- TAB-2 LINK -->
-            <li class="tab-link" data-tab="tab-2">
-              <span class="flaticon-fries"></span>
-              <h5 class="h5-sm">Sides</h5>
-            </li>
 
-            <!-- TAB-3 LINK -->
-            <li class="tab-link" data-tab="tab-3">
-              <span class="flaticon-salad-1"></span>
-              <h5 class="h5-sm">Salads</h5>
-            </li>
-
-            <!-- TAB-3 LINK -->
-            <li class="tab-link" data-tab="tab-4">
-              <span class="flaticon-doughnut"></span>
-              <h5 class="h5-sm">Desserts</h5>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- END TABS NAVIGATION -->
-
-
-    <!-- TABS CONTENT -->
-    <div id="tabs-content">
-      <!-- TAB-1 CONTENT -->
-      <div id="tab-1" class="tab-content current">
-        <div class="row">
-          <!-- MENU ITEM #1 -->
-          <div *ngFor="let plat of plats" class="col-sm-6 col-lg-3">
-            <div class="menu-7-item">
-              <!-- IMAGE -->
-              <div class="menu-7-img rel">
-                <!-- Image -->
-                <img class="img-fluid" [src]="plat.avatar" alt="menu-image" />
-                <!-- Price -->
-                <div class="menu-7-price bg-coffee">
-                  <h5 class="h5-xs yellow-color">{{plat.sellprice}}</h5>
-                </div>
-                <!-- Like Icon -->
-                <div class="like-ico ico-20">
-                  <a href="#"><span class="flaticon-heart"></span></a>
-                </div>
-              </div>
-
-              <!-- TEXT -->
-              <div class="menu-7-txt rel">
-
-                <!-- Title -->
-                <h5 class="h5-sm coffee-color">{{plat.designation}}</h5>
-
-                <!-- Description -->
-                <p class="grey-color">{{plat.description}}</p>
-
-                <!-- Button -->
-                <a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
-                  <span class="flaticon-shopping-bag"></span> Add to Cart
-                </a>
-
-              </div>
-
-            </div>
-          </div> <!-- END MENU ITEM #1 -->
-        </div> <!-- End row -->
-      </div> <!-- END TAB-1 CONTENT -->
-
-    </div>
-    <!-- END TABS CONTENT -->
-
-
-  </div> <!-- End container -->
-</section>
-
-<ng-template #restaurant>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-lg-6">
@@ -154,7 +67,7 @@
                                   <td data-label="Numero" class="product-qty">{{plat.buyprice}}</td>
                                   <td data-label="Numero" class="product-qty">{{plat.sellprice}}</td>
                   <td data-label="Modifier" class="td-trash"><i class="fa fa-pen" (click)="setModalStatus(plat)" data-toggle="modal" data-target="#exampleModal"></i></td>
-                  <td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="confirmDelete(plat)"  data-toggle="modal" data-target="#deleteModal"></i></td>
+                  <td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="choosePlatDelete(plat)"  data-toggle="modal" data-target="#deleteModal"></i></td>
                 </tr>
               </tbody>
             </table>
@@ -263,12 +176,11 @@
         <button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">
           <i class="fa fa-times"></i> Non
         </button>
-        <button type="button" class="btn btn-md btn-salmon tra-salmon-hover">
+        <button type="button" class="btn btn-md btn-salmon tra-salmon-hover" data-dismiss="modal" (click)="confirmDelete()">
           <i class="fa fa-check"></i> Oui
         </button>
       </div>
       </div>
     </div>
     </div>
-</ng-template>
 

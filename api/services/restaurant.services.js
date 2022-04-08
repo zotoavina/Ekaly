@@ -38,12 +38,36 @@ async function deleteRestaurant(restaurant){
   })
 }
 
+async function deletePlat(restaurant){
+  console.log(restaurant);
+  profilService.getById(restaurant.id).then( resto => {
+    console.log(resto);
+    changePlat(resto, restaurant.plat);
+    console.log(resto);
+    profilService.updateProfil(resto);
+  })
+
+}
+
+function changePlat(restaurant, platId){
+   var plats = restaurant.plats;
+   for(var i = 0; i < plats.length; i++){
+     console.log(plats[i]._id.toString());
+     if(plats[i]._id.toString() == platId){
+       plats[i].status = false;
+       console.log("delete plat");
+       console.log(plats[i]);
+     }
+   }
+}
+
 
 module.exports = {
   findRestaurants,
   addPlates,
   insertRestaurant,
-  deleteRestaurant
+  deleteRestaurant,
+  deletePlat
 }
 
 

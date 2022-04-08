@@ -8,6 +8,14 @@ const OrderItemSchema = new Schema({
   quantity: {
     type: Number,
     required: true
+  },
+  totalsellprice:{
+    type: Number,
+    required: true
+  },
+  totalsoldprice:{
+    type: Number,
+    required: true
   }
 });
 
