@@ -364,7 +364,7 @@ l
 								</td>
 								<td data-label="Numero" class="product-qty">{{resto.phonenumber}}</td>
 								<td data-label="Modifier" class="td-trash"><i class="fa fa-pen" (click)="changeCurrentResto(resto)" data-toggle="modal" data-target="#exampleModal"></i></td>
-								<td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="confirmDelete(resto)"  data-toggle="modal" data-target="#deleteModal"></i></td>
+								<td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="chooseRestoToDelete(resto)"  data-toggle="modal" data-target="#deleteModal"></i></td>
 							</tr>
 						</tbody>
 					</table>
@@ -495,7 +495,7 @@ l
 			<button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">
 				<i class="fa fa-times"></i> Non
 			</button>
-			<button type="button" class="btn btn-md btn-salmon tra-salmon-hover">
+			<button type="button" class="btn btn-md btn-salmon tra-salmon-hover" data-dismiss="modal" (click)="confirmDelete()">
 				<i class="fa fa-check"></i> Oui
 			</button>
 		</div>

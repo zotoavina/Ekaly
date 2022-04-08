@@ -1,5 +1,9 @@
+const dotenv = require('dotenv');
+
 const profilService = require('./profil.services');
 const fileHelper = require('../helpers/file.helper');
+
+dotenv.config();
 
 async function insertRestaurant(restaurant, files){
   console.log(process.env.RESTO_IMG);
@@ -23,11 +27,20 @@ async function addPlates(restaurant, files){
   });
 }
 
+async function deleteRestaurant(restaurant){
+  profilService.getById(restaurant.id).then( resto => {
+    resto.state = Number.parseInt( process.env.DISABLED );
+    console.log(resto);
+    profilService.updateProfil(resto);
+  })
+}
+
 
 module.exports = {
   findRestaurants,
   addPlates,
-  insertRestaurant
+  insertRestaurant,
+  deleteRestaurant
 }
 
 

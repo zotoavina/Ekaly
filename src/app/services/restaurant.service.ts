@@ -25,5 +25,9 @@ export class RestaurantService {
     return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants'), restoData);
   }
 
+  deleteRestaurant(resto: any) : Observable<ResponseData>{
+    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/delete'), resto);
+  }
+
 
 }

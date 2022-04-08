@@ -14,7 +14,7 @@ import { UrlService } from 'src/app/services/url.service';
 })
 export class RestaurantListComponent implements OnInit {
   spinActive : boolean = true;
-  restaurants: any;
+  restaurants: Array<any> = [];
   currentResto !: Profil;
   restoForm: FormGroup;
   userConnected !: Profil;
@@ -78,7 +78,16 @@ export class RestaurantListComponent implements OnInit {
 
   }
 
-  confirmDelete(resto: any){}
+  confirmDelete(){
+    var resto = { id : this.currentResto.id };
+    this.restaurantServ.deleteRestaurant(resto).subscribe( (response: ResponseData ) => {
+        this.restaurants.splice(  this.findResto() );
+    })
+  }
+
+  chooseRestoToDelete(resto: any){
+    this.currentResto = resto;
+  }
 
   selectFile(event: any){
     const files = event.target.files;
@@ -88,6 +97,14 @@ export class RestaurantListComponent implements OnInit {
       this.fileName = files[0].name;
     }
   }
+
+  findResto(){
+    for(var i = 0; i < this.restaurants.length; i++){
+      if(this.currentResto.id == this.restaurants[i].id) return i;
+    }
+    return -1;
+  }
+
 
 
 
