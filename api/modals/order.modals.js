@@ -13,7 +13,7 @@ const OrderItemSchema = new Schema({
     type: Number,
     required: true
   },
-  totalsoldprice:{
+  totalbuyprice:{
     type: Number,
     required: true
   }
@@ -21,15 +21,17 @@ const OrderItemSchema = new Schema({
 
 const OrderSchema = new Schema({
   client : ProfilSchema,
-  restoPlat : {
-    resto: ProfilSchema,
-    plats: [ OrderItemSchema ]
-  },
+  plats: [ OrderItemSchema ],
   totalPrice : {
     type: Number,
     required: true
   },
-  date : Date
+  date : Date,
+  status :{
+    type: Number,
+    required : true
+  },
+  deliverer: ProfilSchema
 });
 
 OrderSchema.set('toJSON', {
