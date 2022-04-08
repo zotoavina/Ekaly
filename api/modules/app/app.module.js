@@ -11,7 +11,7 @@ app.use(fileUpload({
   },
 }));
 
-app.use('/public', express.static('public'));
+app.use('/uploads', express.static('uploads'));
 app.use(express.static('dist/ekaly-front'));
 app.use(express.json());
 app.use(express.urlencoded( { extended : false }));

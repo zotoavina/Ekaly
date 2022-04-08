@@ -16,6 +16,7 @@ async function register(params){
   const {password} = params
   const salt = bcrypt.genSaltSync(10);
   params.password = bcrypt.hashSync(password, salt);
+  params.state = 1;
   const profil = new Profil(params)
   await profil.save();
 }
@@ -25,11 +26,12 @@ async function getById(id) {
 }
 
 async function updateProfil(profil){
-  await Profil.updateOne(profil);
+  await profil.save();
 }
 
-async function findAllByType(type){
-  return await Profil.find({type})
+async function findAllByType(types){
+  var param = { type: types, state: Number.parseInt( process.env.ENABLED ) };
+  return await Profil.find(param);
 }
 
 

@@ -12,9 +12,27 @@ const restaurantController = ( url ,router ) => {
     var restaurant = req.body;
     var files = req.files;
     restaurant.plat = JSON.parse(restaurant.plat);
-    console.log(restaurant);
     restaurantService.addPlates(restaurant, files).then( (restaurant) => response.success(res, restaurant, "Add plat success")  );
   })
+
+  router.post(url, (req, res) => {
+    var data = req.body;
+    console.log(data);
+    var restaurant = JSON.parse( data.restaurant );
+    var files = req.files;
+    restaurantService.insertRestaurant(restaurant, files).then(
+      (restaurant) => response.success(res, null, "Restaurant added with success")
+    );
+  })
+
+  router.post(`${url}/delete`, (req, res) => {
+    var restaurant = req.body;
+    console.log(restaurant);
+    restaurantService.deleteRestaurant(restaurant).then(
+       () => response.success(res, restaurant, "Restaurant deleted")
+    )
+  })
+
 }
 
 
