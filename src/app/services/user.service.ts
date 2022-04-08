@@ -11,7 +11,7 @@ import { ResponseData } from '../models/response-data';
 
 
 export class UserService {
-   private url = baseUrl.api
+  private url = baseUrl.api
   constructor(private httpClient: HttpClient) { }
 
   getAllUser(){
@@ -27,7 +27,9 @@ export class UserService {
     return this.httpClient.post(this.url.concat("user"), user);
   }
 
-
+  getById(profilId: any): Observable<ResponseData>{
+    return this.httpClient.get<ResponseData>(this.url.concat( "user/" + profilId ));
+  }
 
 
 }

@@ -1,3 +1,5 @@
+import { Plat } from "./plat";
+
 export class Profil {
   id: string;
   type: string;
@@ -8,7 +10,7 @@ export class Profil {
   phonenumber?: string;
   avatar ?: string;
   token ?: string;
-  plat ?: Array<any>;
+  plats ?: Array<Plat>;
 
   constructor(
     id: string,

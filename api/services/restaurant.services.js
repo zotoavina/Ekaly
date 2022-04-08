@@ -19,9 +19,12 @@ async function findRestaurants(){
 }
 
 async function addPlates(restaurant, files){
+  console.log(restaurant);
   profilService.getById(restaurant.id).then( resto => {
-    fileHelper.uploadFile(files, process.env.PLAT_IMG);
+    var fileData = fileHelper.uploadFile(files, process.env.PLAT_IMG);
     console.log(resto);
+    restaurant.plat.status = true;
+    restaurant.plat.avatar = fileData.data.path;
     resto.plats.push(restaurant.plat);
     profilService.updateProfil(resto);
   });

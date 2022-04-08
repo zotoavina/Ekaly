@@ -29,5 +29,9 @@ export class RestaurantService {
     return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/delete'), resto);
   }
 
+  insertPlat(restoData : FormData): Observable<ResponseData>{
+    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/addPlat'), restoData);
+  }
+
 
 }

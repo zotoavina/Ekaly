@@ -1,0 +1,274 @@
+<!-- MENU-8
+			============================================= -->
+<section *ngIf="clientType; else restaurant " id="menu-8" class="wide-70 menu-section division">
+  <div class="container">
+    <!-- TABS NAVIGATION -->
+    <div id="tabs-nav">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <ul class="tabs-1 ico-55 red-tabs clearfix">
+            <!-- TAB-1 LINK -->
+            <li class="tab-link current" data-tab="tab-1">
+              <span class="flaticon-dinner"></span>
+              <h5 class="h5-sm">Pasta</h5>
+            </li>
+            <!-- TAB-2 LINK -->
+            <li class="tab-link" data-tab="tab-2">
+              <span class="flaticon-fries"></span>
+              <h5 class="h5-sm">Sides</h5>
+            </li>
+
+            <!-- TAB-3 LINK -->
+            <li class="tab-link" data-tab="tab-3">
+              <span class="flaticon-salad-1"></span>
+              <h5 class="h5-sm">Salads</h5>
+            </li>
+
+            <!-- TAB-3 LINK -->
+            <li class="tab-link" data-tab="tab-4">
+              <span class="flaticon-doughnut"></span>
+              <h5 class="h5-sm">Desserts</h5>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- END TABS NAVIGATION -->
+
+
+    <!-- TABS CONTENT -->
+    <div id="tabs-content">
+      <!-- TAB-1 CONTENT -->
+      <div id="tab-1" class="tab-content current">
+        <div class="row">
+          <!-- MENU ITEM #1 -->
+          <div *ngFor="let plat of plats" class="col-sm-6 col-lg-3">
+            <div class="menu-7-item">
+              <!-- IMAGE -->
+              <div class="menu-7-img rel">
+                <!-- Image -->
+                <img class="img-fluid" [src]="plat.avatar" alt="menu-image" />
+                <!-- Price -->
+                <div class="menu-7-price bg-coffee">
+                  <h5 class="h5-xs yellow-color">{{plat.sellprice}}</h5>
+                </div>
+                <!-- Like Icon -->
+                <div class="like-ico ico-20">
+                  <a href="#"><span class="flaticon-heart"></span></a>
+                </div>
+              </div>
+
+              <!-- TEXT -->
+              <div class="menu-7-txt rel">
+
+                <!-- Title -->
+                <h5 class="h5-sm coffee-color">{{plat.designation}}</h5>
+
+                <!-- Description -->
+                <p class="grey-color">{{plat.description}}</p>
+
+                <!-- Button -->
+                <a href="product-single.html" class="btn btn-sm btn-tra-grey yellow-hover">
+                  <span class="flaticon-shopping-bag"></span> Add to Cart
+                </a>
+
+              </div>
+
+            </div>
+          </div> <!-- END MENU ITEM #1 -->
+        </div> <!-- End row -->
+      </div> <!-- END TAB-1 CONTENT -->
+
+    </div>
+    <!-- END TABS CONTENT -->
+
+
+  </div> <!-- End container -->
+</section>
+
+<ng-template #restaurant>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-lg-6">
+      <div class="discount-coupon row pt-15">
+        <!-- Form -->
+        <div class="col-md-12">
+          <form class="discount-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Restaurant" id="discount-code">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-salmon tra-salmon-hover"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="cart-1" class="wide-100 cart-page division">
+    <div class="container">
+      <!-- CART CHECKOUT -->
+      <div class="row">
+        <!-- DISCOUNT COUPON -->
+        <div class="col-md-4">
+          <h3 class="h5-md red-color">Plats</h3>
+        </div>
+
+        <div class="col-md-4"></div>
+        <!-- Button -->
+        <div class="col-md-4 text-right" data-toggle="modal" data-target="#exampleModal">
+          <button class="btn btn-md btn-salmon tra-salmon-hover" (click)="initForm()"  ><i class="fa fa-plus"></i> Nouveau plat</button>
+        </div>
+      </div>	  <!-- END CART CHECKOUT -->
+
+      <!-- CART TABLE -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="cart-table mb-70">
+            <table id="myTable">
+              <thead>
+                <tr>
+                  <th scope="col">Plat</th>
+                                  <th scope="col">prix d'achat</th>
+                                  <th scope="col">prix</th>
+                  <th scope="col">Modifier</th>
+                  <th scope="col">Supprimer</th>
+                </tr>
+                </thead>
+              <tbody>
+                <!-- CART ITEM #1 -->
+                <tr *ngFor="let plat of plats" >
+                  <td data-label="Resto" class="product-name">
+
+                    <!-- Preview -->
+                    <div class="cart-product-img"><img [src]="plat.avatar" alt="cart-preview"></div>
+
+                    <!-- Description -->
+                    <div class="cart-product-desc">
+                      <h5 class="h5-sm">{{plat.designation}}</h5>
+                    </div>
+
+                  </td>
+                                  <td data-label="Numero" class="product-qty">{{plat.buyprice}}</td>
+                                  <td data-label="Numero" class="product-qty">{{plat.sellprice}}</td>
+                  <td data-label="Modifier" class="td-trash"><i class="fa fa-pen" (click)="setModalStatus(plat)" data-toggle="modal" data-target="#exampleModal"></i></td>
+                  <td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="confirmDelete(plat)"  data-toggle="modal" data-target="#deleteModal"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>	<!-- END CART TABLE -->
+
+    </div>	   <!-- End container -->
+  </section>	<!-- END CART PAGE -->
+
+
+
+
+    <!-- Modal Creation-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Plat</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+           <!-- BOOKING-2
+        ============================================= -->
+             <div class="row">
+                          <!-- BOOKING FORM -->
+               <div class="col-lg-12">
+                 <div class="form-holder">
+                   <!-- Form -->
+                   <form [formGroup]="platesForm" class="row booking-form">
+
+                            <!-- Form Input -->
+                             <div class="col-lg-12">
+                      <label>Nom: </label>
+                              <input type="text" formControlName="designation" class="form-control" placeholder="Plat" required>
+                            </div>
+
+                    <!-- Form Input -->
+                            <div class="col-lg-6">
+                      <label>Prix: </label>
+                              <input type="number" formControlName="sellprice" class="form-control" placeholder="Prix" required>
+                            </div>
+
+                            <!-- Form Input -->
+                            <div class="col-lg-6">
+                      <label>Prix d'achat: </label>
+                              <input type="number" formControlName="buyprice" class="form-control" placeholder="prix d'achat" required>
+                            </div>
+
+                                      <div class="col-md-12">
+                                          <div class="custom-file">
+                        <label>Photo :</label>
+                                              <input type="file" (change)="selectFile($event)" class="custom-file-input" id="customFile">
+                                              <label class="custom-file-label" for="customFile">Photo</label>
+                                          </div>
+                                      </div>
+
+                            <!-- Form Input -->
+                            <div class="col-lg-12">
+                                          <label>Description: </label>
+                                          <textarea formControlName="description" class="form-control" placeholder="Description" id="" cols="30" rows="10"></textarea>
+
+                            </div>
+
+
+                            <!-- Form Message -->
+                            <div class="col-md-12 booking-form-msg text-center">
+                              <div class="sending-msg"><span class="loading"></span></div>
+                    </div>
+                  </form>
+                  <!-- End Form -->
+                 </div>
+
+               </div>	<!-- END BOOKING FORM -->
+
+                      </div>
+        <!-- End row -->
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-md btn-salmon tra-salmon-hover" data-dismiss="modal" (click)="addPlate()">Ajouter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal delete restaurant-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Vous voulez vraiment supprimer {{plat.designation}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">
+          <i class="fa fa-times"></i> Non
+        </button>
+        <button type="button" class="btn btn-md btn-salmon tra-salmon-hover">
+          <i class="fa fa-check"></i> Oui
+        </button>
+      </div>
+      </div>
+    </div>
+    </div>
+</ng-template>
+
