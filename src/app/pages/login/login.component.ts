@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
 import { StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   load: boolean = true;
   inscriptionForm : FormGroup;
   loginForm : FormGroup;
+  connectedUser ?: Profil;
 
   constructor(
     private userServ: UserService,
@@ -77,16 +79,23 @@ export class LoginComponent implements OnInit {
       if(response.code == 202){
         console.log(response);
         this.stroageServ.setStorage("profil", response.data);
+        this.connectedUser = response.data;
         console.log("Redirection");
-        this.router.navigateByUrl('/ekaly/app/restaurants');
+        this.redirection();
       }
     })
   }
 
-
-
   changeState(): void{
     this.isLogin = !this.isLogin;
+  }
+
+  redirection(){
+    const url = '/ekaly/app/restaurants';
+    console.log(this.connectedUser?.type);
+    if(this.connectedUser?.type === "client") this.router.navigateByUrl(url);
+    if(this.connectedUser?.type === "restaurant") this.router.navigate([url + '/', this.connectedUser.id]);
+    if(this.connectedUser?.type === "ekaly") this.router.navigateByUrl(url);
   }
 
 }
