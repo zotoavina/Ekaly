@@ -354,10 +354,10 @@ l
 								<td data-label="Resto" class="product-name">
 
 									<!-- Preview -->
-									<div class="cart-product-img"><img [src]="resto.avatar" alt="cart-preview"></div>
+									<div class="cart-product-img" (click)="seePlates(resto)"><img [src]="resto.avatar" alt="cart-preview"></div>
 
 									<!-- Description -->
-									<div class="cart-product-desc">
+									<div class="cart-product-desc" (click)="seePlates(resto)">
 										<h5 class="h5-sm">{{resto.firstname}}</h5>
 									</div>
 

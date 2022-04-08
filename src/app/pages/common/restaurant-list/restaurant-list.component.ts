@@ -1,6 +1,7 @@
 import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
 import { RestaurantService } from 'src/app/services/restaurant.service';
@@ -26,7 +27,8 @@ export class RestaurantListComponent implements OnInit {
      private restaurantServ: RestaurantService,
      private urlServ: UrlService,
      private formBuilder: FormBuilder,
-     private storageServ: StorageService
+     private storageServ: StorageService,
+     private router: Router
      ) {
        this.restoForm = formBuilder.group({
          firstname: ["", Validators.required],
@@ -106,7 +108,11 @@ export class RestaurantListComponent implements OnInit {
   }
 
 
-
+  seePlates(resto: any){
+    console.log("see plates");
+    console.log(resto);
+    this.router.navigate(["ekaly/app/plats"]);
+  }
 
 
 }
