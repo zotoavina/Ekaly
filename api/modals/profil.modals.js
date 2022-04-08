@@ -12,6 +12,10 @@ const ProfilSchema = new Schema({
       type: String,
       required: false
     },
+    avatar:{
+      type: String,
+      required : false
+    },
     email: {
         type: String,
         required: true,
@@ -28,6 +32,11 @@ const ProfilSchema = new Schema({
     plats: [ plat ],
     type:{
       type: String,
+      required: true,
+      default: 1
+    },
+    state:{
+      type: Number,
       required: true
     }
 },  { shardkey :{ email : 1} });
