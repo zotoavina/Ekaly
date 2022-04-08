@@ -111,7 +111,12 @@ export class RestaurantListComponent implements OnInit {
   seePlates(resto: any){
     console.log("see plates");
     console.log(resto);
-    this.router.navigate(["ekaly/app/plats"]);
+    console.log(this.clientType);
+    if(this.clientType) {
+      this.router.navigate(["ekaly/app/plats/", {id: resto.id}]);
+    }else{
+      this.router.navigate(["ekaly/app/restaurants/",  resto.id]);
+    }
   }
 
 

@@ -33,6 +33,20 @@ const restaurantController = ( url ,router ) => {
     )
   })
 
+  router.post(`${url}/delete/plat`, (req, res) => {
+    var restaurant = req.body;
+    console.log(restaurant);
+    restaurantService.deletePlat(restaurant).then(
+       () => response.success(res, restaurant, "Plat deleted")
+    )
+  })
+
+  router.get(`${url}/search`, (req, res) => {
+    restaurantService.findPlats().then(
+       (plats) => response.success(res, plats, "Plats selected")
+    )
+  })
+
 }
 
 

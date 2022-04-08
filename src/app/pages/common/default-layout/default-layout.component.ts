@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-default-layout',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router : Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  seeBasket(){
+    console.log("See cart");
+    this.router.navigateByUrl("ekaly/app/users/cart");
+  }
+
 }
+
