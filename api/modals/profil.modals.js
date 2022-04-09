@@ -23,11 +23,12 @@ const ProfilSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        error : "email attribute is required"
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        error : "password attribute is required"
     },
     phonenumber: {
       type: String,

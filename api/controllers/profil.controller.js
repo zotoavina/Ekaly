@@ -17,7 +17,7 @@ const profilController = (url , router) => {
   router.post( `${url}`, (req, res) => {
     profilService.register(req.body).then(
       () => response.success(res, null, "Registration success")
-    ).catch( err => response.error(res, "Error during registration") );
+    ).catch( err => response.error(res, "An error occured during the registration") );
   })
 
   // find profil  by id

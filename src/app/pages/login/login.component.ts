@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   connectedUser ?: Profil;
   errorLogin : string = "";
+  errorRegister : string = "";
 
   constructor(
     private userServ: UserService,
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
       email:["zotoavinanantenaina@gmail.com",Validators.required],
       address:["K04 052 BIS Ivato Aéroport", Validators.required],
       phoneNumber:["0328818232", Validators.required],
-      password:["123456", Validators.required]
+      password:["123456", [Validators.required, Validators.minLength(6)]]
     });
 
     this.loginForm = formBuilder.group({
@@ -46,6 +47,10 @@ export class LoginComponent implements OnInit {
     // this.login();
   }
 
+  get firstName() { return this.inscriptionForm.get('firstName'); }
+  get email() { return this.inscriptionForm.get('email'); }
+  get password() { return this.inscriptionForm.get('password'); }
+
   stopLoading(){
     this.load = false;
   }
@@ -57,16 +62,24 @@ export class LoginComponent implements OnInit {
   }
 
   inscription(){
+    this.errorRegister = "";
+    if(!this.inscriptionForm.valid) return;
     const user = {
       firstname : this.inscriptionForm.get("firstName")?.value,
       lastname: this.inscriptionForm.get("lastName")?.value,
       email: this.inscriptionForm.get("email")?.value,
       phonenumber: this.inscriptionForm.get("phoneNumber")?.value,
-      password: this.inscriptionForm.get("password")?.value
+      password: this.inscriptionForm.get("password")?.value,
+      type: "client"
     };
     console.log(user);
-    this.userServ.insert(user).subscribe( response => {
+    this.userServ.insert(user).subscribe( (response: ResponseData) => {
       console.log(response);
+      if(response.code == 202){
+        this.redirection();
+      }else{
+        this.errorRegister = response.message;
+      }
     });
   }
 
@@ -84,7 +97,6 @@ export class LoginComponent implements OnInit {
         profil.password ="password";
         this.stroageServ.setStorage("profil", profil);
         this.connectedUser = profil;
-        console.log("Redirection");
         this.redirection();
       }else{
         this.errorLogin = response.message;

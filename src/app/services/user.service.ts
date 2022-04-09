@@ -23,8 +23,8 @@ export class UserService {
     return this.httpClient.post<ResponseData>(this.url.concat("user/login"), userData);
   }
 
-  insert(user : any){
-    return this.httpClient.post(this.url.concat("user"), user);
+  insert(user : any): Observable<ResponseData>{
+    return this.httpClient.post<ResponseData>(this.url.concat("user"), user);
   }
 
   getById(profilId: any): Observable<ResponseData>{
