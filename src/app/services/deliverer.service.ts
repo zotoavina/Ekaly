@@ -21,5 +21,8 @@ export class DelivererService {
     return this.httpClient.get<ResponseData>( this.urlService.apiUrl("deliverers") );
   }
 
+  addDeliverer(data : FormData): Observable<ResponseData>{
+    return this.httpClient.post<ResponseData>(this.urlService.apiUrl("deliverers"), data);
+  }
 
 }

@@ -7,13 +7,13 @@
 		<div class="row">
 			<!-- DISCOUNT COUPON -->
 			<div class="col-md-4">
-				<h3 class="h5-md red-color">Restaurants</h3>
+				<h3 class="h5-md red-color">List of Deliverers</h3>
 			</div>
 
 			<div class="col-md-4"></div>
 			<!-- Button -->
 			<div class="col-md-4 text-right" data-toggle="modal" data-target="#exampleModal">
-				<button class="btn btn-md btn-salmon tra-salmon-hover" (click)="initiateForm()"  ><i class="fa fa-plus"></i> Nouveau Resto</button>
+				<button class="btn btn-md btn-salmon tra-salmon-hover" (click)="initiateForm()"  ><i class="fa fa-plus"></i> New Deliverer</button>
 			</div>
 		</div>	  <!-- END CART CHECKOUT -->
 
@@ -24,10 +24,11 @@
 					<table id="myTable">
 						<thead>
 							<tr>
-								<th scope="col">Resto</th>
-								<th scope="col">Numéro</th>
-								<th scope="col">Modifier</th>
-								<th scope="col">Supprimer</th>
+								<th scope="col">Avatar</th>
+								<th scope="col">First Name</th>
+								<th scope="col">Last Name</th>
+								<th scope="col">Modify</th>
+								<th scope="col">Delete</th>
 							</tr>
 							</thead>
 						<tbody>
@@ -38,13 +39,16 @@
 									<!-- Preview -->
 									<div class="cart-product-img" ><img [src]="deliverer.avatar" alt="cart-preview"></div>
 
-									<!-- Description -->
+								</td>
+
+                <td>
+                  	<!-- Description -->
 									<div class="cart-product-desc" >
 										<h5 class="h5-sm">{{deliverer.firstname}}</h5>
 									</div>
+                </td>
 
-								</td>
-								<td data-label="Numero" class="product-qty">{{deliverer.phonenumber}}</td>
+                <td data-label="Numero" class="product-qty">{{deliverer.lastname}}</td>
 								<td data-label="Modifier" class="td-trash"><i class="fa fa-pen" (click)="changeCurrentDeliverer(deliverer)" data-toggle="modal" data-target="#exampleModal"></i></td>
 								<td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="chooseDelivererToDelete(deliverer)"  data-toggle="modal" data-target="#deleteModal"></i></td>
 							</tr>
@@ -89,7 +93,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Restaurant</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Deliverer</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -106,13 +110,19 @@
 
 					                <!-- Form Input -->
 					                 <div class="col-lg-6">
-										<label>Nom: </label>
-					                	<input type="text" formControlName="firstname" class="form-control" placeholder="Deliverer" required>
+										<label>First Name: </label>
+					                	<input type="text" formControlName="firstname" class="form-control" placeholder="firstname" required>
 					                </div>
+
+                            <!-- Form Input -->
+					                 <div class="col-lg-6">
+                            <label>Last Name: </label>
+                                    <input type="text" formControlName="lastname" class="form-control" placeholder="lastname" required>
+                                  </div>
 
 									<!-- Form Input -->
 					                <div class="col-lg-6">
-										<label>Téléphone: </label>
+										<label>Phone number: </label>
 					                	<input type="text" formControlName="phonenumber" class="form-control phone" placeholder="+261" required>
 					                </div>
 
@@ -125,7 +135,7 @@
 					                <!-- Form Input -->
 					                <div class="col-lg-6">
 										<label>Mots de passe: </label>
-					                	<input type="password" formControlName="password" class="form-control" placeholder="Phone Number*" required>
+					                	<input type="password" formControlName="password" class="form-control" placeholder="Password" required>
 					                </div>
 
 									<!-- Form Textarea -->

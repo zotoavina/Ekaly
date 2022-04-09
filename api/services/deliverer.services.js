@@ -15,6 +15,7 @@ async function addDeliverer(deliverer, files){
   var fileData = fileHelper.uploadFile(files, process.env.DELIVERER_IMG);
   console.log(fileData);
   deliverer.avatar = fileData.data.path;
+  deliverer.type = "deliverer";
   console.log(deliverer);
   return await profilService.register(deliverer)
 }
