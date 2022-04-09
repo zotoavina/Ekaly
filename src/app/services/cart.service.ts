@@ -5,7 +5,9 @@ import { baseUrl, environment } from 'src/environments/environment';
 import { Cart } from '../models/cart';
 import { Order } from '../models/order';
 import { Profil } from '../models/profil';
+import { ResponseData } from '../models/response-data';
 import { StorageService } from './storage.service';
+import { UrlService } from './url.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class CartService {
 
   constructor(
   private storageServ: StorageService,
-  private http: HttpClient
+  private http: HttpClient,
+  private urlService: UrlService
   ) { }
 
   checkCart(){
@@ -68,8 +71,8 @@ export class CartService {
     return (cart.totalsellprice + cart.frais);
   }
 
-  public addCommand(cart: Cart): Observable<Response>{
-    return this.http.post<Response>(`${this.url}/orders`, cart);
+  public addCommand(cart: Cart): Observable<ResponseData>{
+    return this.http.post<ResponseData>(this.urlService.apiUrl('orders'), cart);
   }
 
 }

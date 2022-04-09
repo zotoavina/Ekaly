@@ -78,8 +78,10 @@ export class LoginComponent implements OnInit {
     this.userServ.login(credentials).subscribe( (response: ResponseData) => {
       if(response.code == 202){
         console.log(response);
-        this.stroageServ.setStorage("profil", response.data);
-        this.connectedUser = response.data;
+        let profil: Profil = response.data;
+        profil.password ="password";
+        this.stroageServ.setStorage("profil", profil);
+        this.connectedUser = profil;
         console.log("Redirection");
         this.redirection();
       }
