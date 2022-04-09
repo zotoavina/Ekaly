@@ -3,6 +3,7 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const expressUnless = require('express-unless');
 const jwt = require('../../helpers/jwt.helper');
+const errorHanlder = require('../../helpers/errorHandler.helper');
 const app = express();
 
 jwt.authenticateToken.unless = expressUnless;
@@ -21,6 +22,8 @@ app.use(jwt.authenticateToken.unless({
     {url: "/api/user", methods: ['POST']}
   ]
 }))
+
+app.use(errorHanlder.errorHandler);
 
 app.use('/uploads', express.static('uploads'));
 app.use(express.static('dist/ekaly-front'));

@@ -6,9 +6,9 @@ module.exports = {
       message : message
     } )
   },
-  error : function(res, message){
+  error : function(res, message, code = 400 ){
     res.json( {
-      code : 400,
+      code : code,
       message : message
     } )
   }
