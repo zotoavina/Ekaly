@@ -13,15 +13,36 @@ async function getAllOrders(){
 }
 
 async function findOrderOfRestaurant(resto){
-
+  return await Order.find( {"plats.plat.sellprice": 10000} );
 }
 
+async function getById(orderId){
+  return await Order.findById(orderId);
+}
 
+async function setDeliverer(orderId, deliverer){
+  getById(orderId).then( (order) => {
+    order.deliverer = deliverer;
+    order.save();
+    return order;
+  })
+}
+
+async function updateStatusOrder(orderId, status){
+  getById(orderId).then( (order) => {
+    order.status = status;
+    order.save();
+    return order;
+  })
+}
 
 
 module.exports = {
   saveOrder,
-  getAllOrders
+  getAllOrders,
+  findOrderOfRestaurant,
+  setDeliverer,
+  updateStatusOrder
 }
 
 

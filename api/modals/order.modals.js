@@ -31,7 +31,10 @@ const OrderSchema = new Schema({
     type: Number,
     required : true
   },
-  deliverer: ProfilSchema
+  deliverer:{
+    type : ProfilSchema,
+    required: false
+  }
 });
 
 OrderSchema.set('toJSON', {

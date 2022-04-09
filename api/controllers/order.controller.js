@@ -11,6 +11,11 @@ const orderController = (url, router) => {
   router.get(`${url}`, (req, res) => {
     orderService.getAllOrders().then( (orders) => response.success(res, orders, "Orders selected"))
   });
+
+  router.get(`${url}/restaurant`, (req, res) => {
+    orderService.getAllOrders().then( (orders) => response.success(res, orders, "Orders selected"))
+  });
+
 }
 
 module.exports = orderController;
