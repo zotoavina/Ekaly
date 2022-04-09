@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const profilController = require('./controllers/profil.controller');
 const restaurantController = require('./controllers/restaurant.controller');
 const orderController = require('./controllers/order.controller');
+const delivererController = require('./controllers/deliverer.controller')
 
 
 const uri = "mongodb://localhost:27017/ekaly";
@@ -17,6 +18,7 @@ async function main(){
   profilController('/api/user', app);
   restaurantController('/api/restaurants',app);
   orderController('/api/orders', app);
+  delivererController('/api/deliverers', app);
 }
 
 module.exports = {main, app};
