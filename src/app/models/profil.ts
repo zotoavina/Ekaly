@@ -11,6 +11,7 @@ export class Profil {
   avatar ?: string;
   token ?: string;
   plats ?: Array<Plat>;
+  state?: number;
 
   constructor(
     id: string,

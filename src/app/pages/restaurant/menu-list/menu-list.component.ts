@@ -18,7 +18,7 @@ export class MenuListComponent implements OnInit {
 
   restaurant!: Profil;
   plats : Array<Plat> | undefined = [];
-  plat: Plat =  new Plat("Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
+  plat: Plat =  new Plat("","Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
   platesForm!: FormGroup;
   connectedUser!: Profil;
   formData : FormData = new FormData();
@@ -73,7 +73,7 @@ export class MenuListComponent implements OnInit {
   }
 
   public initForm(): void{
-    this.plat =  new Plat("Burger",100,200,"Burger Burger",""),
+    this.plat = new Plat("","Burger",100,200,"Burger Burger","Burger");
     this.action = true;
     this.setForm();
   }
