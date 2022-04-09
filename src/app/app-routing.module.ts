@@ -6,6 +6,7 @@ import { MenuListComponent } from './pages/restaurant/menu-list/menu-list.compon
 import { RestaurantListComponent } from './pages/common/restaurant-list/restaurant-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PlatlistComponent } from './pages/client/platlist/platlist.component';
+import { DelevererListComponent } from './pages/ekaly/deleverer-list/deleverer-list.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path:'users/cart',
         component: ShoppingCartComponent
+      },
+      {
+        path:'deliverers',
+        component: DelevererListComponent
       }
     ]
   }
