@@ -29,11 +29,18 @@ async function setDeliverer(orderId, deliverer){
 }
 
 async function updateStatusOrder(orderId, status){
+  console.log(status);
   getById(orderId).then( (order) => {
+    console.log(order);
     order.status = status;
     order.save();
     return order;
   })
+
+  async function getOrderByDeliverer(delivererId){
+    return await Order.find({"deliverer.id": delivererId});
+  }
+
 }
 
 
@@ -42,7 +49,8 @@ module.exports = {
   getAllOrders,
   findOrderOfRestaurant,
   setDeliverer,
-  updateStatusOrder
+  updateStatusOrder,
+  getOrderByDeliverer
 }
 
 
