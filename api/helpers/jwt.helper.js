@@ -9,14 +9,13 @@ function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
 
-    if (token == null) response.error(res, "Unauthorized: Token needed", 401);
-
+    if (token == null) return response.error(res, "Missing token", 401);
     jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         console.log(err)
 
-        if (err) return response.error(res, "Unauthorized: Token not valid", 403);
-        // req.user = user
-        // next()
+        if (err) return response.error(res, "Bad token", 401);
+        req.user = user
+        next()
     })
 }
 
