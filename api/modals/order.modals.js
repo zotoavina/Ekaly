@@ -20,7 +20,14 @@ const OrderItemSchema = new Schema({
 });
 
 const OrderSchema = new Schema({
-  client : ProfilSchema,
+  id :{
+    type : String,
+    required: false
+  },
+  client : {
+    type: ProfilSchema,
+    required : true
+  },
   plats: [ OrderItemSchema ],
   totalPrice : {
     type: Number,
