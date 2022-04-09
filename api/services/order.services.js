@@ -36,12 +36,12 @@ async function updateStatusOrder(orderId, status){
     order.save();
     return order;
   })
-
-  async function getOrderByDeliverer(delivererId){
-    return await Order.find({"deliverer.id": delivererId});
-  }
-
 }
+
+async function getOrderByDeliverer(delivererId){
+  return await Order.find({"deliverer.id": delivererId});
+}
+
 
 
 module.exports = {

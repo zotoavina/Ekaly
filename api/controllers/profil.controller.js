@@ -10,7 +10,7 @@ const profilController = (url , router) => {
     const credentials = req.body;
      profilService.login(credentials).then(
        (profil) => response.success(res, profil, "Log in success")
-     )
+     ).catch( err => response.error(res, err.message));
   } );
 
   // inscription

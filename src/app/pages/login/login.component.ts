@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   inscriptionForm : FormGroup;
   loginForm : FormGroup;
   connectedUser ?: Profil;
+  errorLogin : string = "";
 
   constructor(
     private userServ: UserService,
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.errorLogin = "";
     const credentials = {
       email: this.loginForm.get("email")?.value,
       password: this.loginForm.get("password")?.value
@@ -84,6 +86,9 @@ export class LoginComponent implements OnInit {
         this.connectedUser = profil;
         console.log("Redirection");
         this.redirection();
+      }else{
+        this.errorLogin = response.message;
+        console.log(this.errorLogin);
       }
     })
   }
