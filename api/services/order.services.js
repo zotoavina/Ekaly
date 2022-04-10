@@ -13,7 +13,7 @@ async function getAllOrders(){
 }
 
 async function findOrderOfRestaurant(resto){
-  return await Order.find( {"plats.plat.sellprice": 10000} );
+  return await Order.find( {"plats.plat.parentresto": resto.id} , {plats:1, client: 1});
 }
 
 async function getById(orderId){

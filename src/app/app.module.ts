@@ -12,6 +12,7 @@ import { MenuListComponent } from './pages/restaurant/menu-list/menu-list.compon
 import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
 import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 import { DelevererListComponent } from './pages/ekaly/deleverer-list/deleverer-list.component';
+import { OrderListComponent } from './pages/common/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DelevererListComponent } from './pages/ekaly/deleverer-list/deleverer-l
     MenuListComponent,
     ShoppingCartComponent,
     PlatlistComponent,
-    DelevererListComponent
+    DelevererListComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
