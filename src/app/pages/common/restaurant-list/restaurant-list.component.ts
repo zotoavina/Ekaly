@@ -69,14 +69,14 @@ export class RestaurantListComponent implements OnInit {
     var resto = this.restoForm.value;
     resto.type = "restaurant";
     resto.plats = [];
-    this.restoData.append("restaurant", JSON.stringify(resto));
+    this.restoData.set("restaurant", JSON.stringify(resto));
     this.restaurantServ.insertRestaurant(this.restoData).subscribe( (response: ResponseData) => {
       console.log(response);
       if(response.code == 202){
         response.data.avatar = this.urlServ.apiUrl(response.data.avatar, false);
         this.restaurants.push( response.data );
       }else{
-
+        console.log(response);
       }
     })
   }
@@ -101,7 +101,7 @@ export class RestaurantListComponent implements OnInit {
   selectFile(event: any){
     const files = event.target.files;
     if(files && files.length > 0){
-      this.restoData.append("avatar", files[0]);
+      this.restoData.set("avatar", files[0]);
       console.log(files[0]);
       this.fileName = files[0].name;
     }

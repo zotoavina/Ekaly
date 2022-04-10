@@ -28,7 +28,7 @@ async function getById(id) {
 }
 
 async function updateProfil(profil){
-  await profil.save();
+  return await profil.save();
 }
 
 async function findAllByType(types){
