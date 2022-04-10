@@ -15,7 +15,7 @@ export class UserService {
   private url = baseUrl.api
   constructor(private dataService: DataService, private httpClient : HttpClient) { }
 
-  getAllUser(){
+  getAllUser(): Observable<ResponseData>{
     return this.dataService.getData("user/all");
   }
 
