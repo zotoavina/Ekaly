@@ -20,7 +20,7 @@ async function register(params){
   params.password = bcrypt.hashSync(password, salt);
   params.state = 1;
   const profil = new Profil(params)
-  await profil.save();
+  return await profil.save();
 }
 
 async function getById(id) {

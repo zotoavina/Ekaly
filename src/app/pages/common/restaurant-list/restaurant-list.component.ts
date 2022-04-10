@@ -65,12 +65,19 @@ export class RestaurantListComponent implements OnInit {
   }
 
   addRestaurant(){
+    if(!this.restoForm.valid) return;
     var resto = this.restoForm.value;
     resto.type = "restaurant";
     resto.plats = [];
     this.restoData.append("restaurant", JSON.stringify(resto));
-    this.restaurantServ.insertRestaurant(this.restoData).subscribe( (response) => {
+    this.restaurantServ.insertRestaurant(this.restoData).subscribe( (response: ResponseData) => {
       console.log(response);
+      if(response.code == 202){
+        response.data.avatar = this.urlServ.apiUrl(response.data.avatar, false);
+        this.restaurants.push( response.data );
+      }else{
+
+      }
     })
   }
 
