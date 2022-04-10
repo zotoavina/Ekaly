@@ -14,11 +14,11 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:'ekaly/login',
+    path:'login',
     component:LoginComponent
   },
   {
-    path:'ekaly/app',
+    path:'app',
     component: DefaultLayoutComponent,
     children:[
       {
