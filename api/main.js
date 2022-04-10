@@ -21,9 +21,10 @@ async function main(){
   orderController('/api/orders', app);
   delivererController('/api/deliverers', app);
   app.get("/send/mail", (req, res) => {
-    console.log("Start send mail");
-    mailer.sendMail();
-    console.log("End send mail");
+    var mailOptions = {
+      to : "zotoavinanantenaina@gmail.com"
+    };
+    mailer.sendMail(mailOptions);
     res.json({message: "OK"});
   })
 
