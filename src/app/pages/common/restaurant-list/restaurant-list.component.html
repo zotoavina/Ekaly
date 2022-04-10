@@ -1,0 +1,504 @@
+l
+		<!-- PRELOADER SPINNER
+		============================================= -->
+		<div id="loader-wrapper" *ngIf="spinActive">
+			<div id="loader">
+				<div class="cssload-spinner">
+					<div class="cssload-ball cssload-ball-1"></div>
+					<div class="cssload-ball cssload-ball-2"></div>
+					<div class="cssload-ball cssload-ball-3"></div>
+					<div class="cssload-ball cssload-ball-4"></div>
+				</div>
+			</div>
+		</div>
+		<!-- HEADER-3
+		============================================= -->
+
+<!-- TEAM-1
+			============================================= -->
+			<section id="team-1" class="team-1 wide-60 reviews-section division">
+				<div class="container">
+
+          <div class="row">
+						<div class="col-lg-10 offset-lg-1">
+							<div class="section-title mb-60 text-center">
+
+								<!-- Title 	-->
+								<h2 class="h2-xl red-color">Nos Restaurants</h2>
+
+								<!-- Text -->
+								<p class="p-xl">Aliquam a augue suscipit, luctus neque purus ipsum neque undo dolor
+								   primis libero tempus, blandit a cursus varius magna
+								</p>
+
+                   <!-- SEARCH BAR -->
+
+                <div class="row">
+                  <div class="col-md-3"></div>
+                  <div class="col-lg-6">
+                    <div class="discount-coupon row pt-15">
+                      <!-- Form -->
+                      <div class="col-md-12">
+                        <form class="discount-form">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Restaurant" id="discount-code">
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-salmon tra-salmon-hover"><i class="fa fa-search"></i></button>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+							</div>
+						</div>
+
+					</div>
+
+
+
+
+					<!-- TEAM-1 WRAPPER -->
+			 		<div class="team-1-wrapper text-center" *ngIf="clientType">
+			 			<div class="row">
+
+
+			 				<!-- TEAM MEMBER #1 -->
+							<div class="col-sm-6 col-lg-3" *ngFor="let restaurant of restaurants">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo"  (click)="seePlates(restaurant)">
+
+										<img class="img-fluid" [src]="restaurant.avatar" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">{{ restaurant.firstname }}</h5>
+										<span class="yellow-color">  </span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #2 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-2.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Jennifer Harper</h5>
+										<span class="yellow-color">Sous Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #3 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-3.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Jonathan Coronado</h5>
+										<span class="yellow-color">Burger - Сhef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #4 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-4.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Jorge Stucky</h5>
+										<span class="yellow-color">Grill Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #5 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-5.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Anthony Backer</h5>
+										<span class="yellow-color">Fry Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #6 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-6.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Lea Victoria</h5>
+										<span class="yellow-color">Roast Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #7 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-7.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Justin Roberto</h5>
+										<span class="yellow-color">Pizza Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<!-- TEAM MEMBER #8 -->
+							<div class="col-sm-6 col-lg-3">
+								<div class="team-member">
+
+									<!-- Team Member Photo -->
+									<div class="team-member-photo">
+
+										<img class="img-fluid" src="./assets/images/team-8.jpg" alt="team-member-foto">
+
+										<!-- Social Icons -->
+										<div class="tm-social clearfix">
+											<ul class="text-center clearfix">
+												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
+												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
+												<li><a href="#" class="ico-instagram"><i class="fab fa-instagram"></i></a></li>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- Team Member Meta -->
+									<div class="tm-meta">
+										<h5 class="h5-xs">Stephanie Reed</h5>
+										<span class="yellow-color">Executive Chef</span>
+									</div>
+
+								</div>
+							</div>
+
+
+			 			</div>
+			 		</div>	<!-- END TEAM-1 WRAPPER -->
+
+
+				</div>	    <!-- End container -->
+			</section>	 <!-- END TEAM-1 -->
+
+
+
+      <!-- CRUD of RESTAURANT -->
+
+
+<section id="cart-1" class="wide-100 cart-page division" *ngIf="!clientType">
+	<div class="container">
+		<!-- CART CHECKOUT -->
+		<div class="row">
+			<!-- DISCOUNT COUPON -->
+			<div class="col-md-4">
+				<h3 class="h5-md red-color">Restaurants</h3>
+			</div>
+
+			<div class="col-md-4"></div>
+			<!-- Button -->
+			<div class="col-md-4 text-right" data-toggle="modal" data-target="#exampleModal">
+				<button class="btn btn-md btn-salmon tra-salmon-hover" (click)="initiateForm()"  ><i class="fa fa-plus"></i> Nouveau Resto</button>
+			</div>
+		</div>	  <!-- END CART CHECKOUT -->
+
+		<!-- CART TABLE -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="cart-table mb-70">
+					<table id="myTable">
+						<thead>
+							<tr>
+								<th scope="col">Resto</th>
+								<th scope="col">Numéro</th>
+								<th scope="col">Modifier</th>
+								<th scope="col">Supprimer</th>
+							</tr>
+							</thead>
+						<tbody>
+							<!-- CART ITEM #1 -->
+							<tr *ngFor="let resto of restaurants; let i = index" >
+								<td data-label="Resto" class="product-name">
+
+									<!-- Preview -->
+									<div class="cart-product-img" (click)="seePlates(resto)"><img [src]="resto.avatar" alt="cart-preview"></div>
+
+									<!-- Description -->
+									<div class="cart-product-desc" (click)="seePlates(resto)">
+										<h5 class="h5-sm">{{resto.firstname}}</h5>
+									</div>
+
+								</td>
+								<td data-label="Numero" class="product-qty">{{resto.phonenumber}}</td>
+								<td data-label="Modifier" class="td-trash"><i class="fa fa-pen" (click)="changeCurrentResto(resto)" data-toggle="modal" data-target="#exampleModal"></i></td>
+								<td data-label="Supprimer" class="td-trash"><i class="far fa-trash-alt" (click)="chooseRestoToDelete(resto)"  data-toggle="modal" data-target="#deleteModal"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>	<!-- END CART TABLE -->
+
+	</div>	   <!-- End container -->
+</section>	<!-- END CART PAGE -->
+
+
+	<!-- PAGE PAGINATION
+			============================================= -->
+			<div class="bg-color-01 page-pagination division">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+
+							<nav aria-label="Page navigation">
+								<ul class="pagination justify-content-center">
+									<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+								    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+								    <li class="page-item"><a class="page-link" href="#">2</a></li>
+								    <li class="page-item"><a class="page-link" href="#">3</a></li>
+								    <li class="page-item"><a class="page-link" href="#">4</a></li>
+								    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+								</ul>
+							</nav>
+
+						</div>
+					</div>  <!-- End row -->
+				</div> <!-- End container -->
+			</div>	<!-- END PAGE PAGINATION -->
+
+
+
+
+  <!-- Modal Creation-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Restaurant</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <!-- BOOKING-2
+			============================================= -->
+				 	<div class="row">
+                        <!-- BOOKING FORM -->
+				 		<div class="col-lg-12">
+			 				<div class="form-holder">
+								 <!-- Form -->
+								 <form [formGroup]="restoForm" class="row booking-form">
+
+					                <!-- Form Input -->
+					                 <div class="col-lg-6">
+										<label>Nom: </label>
+					                	<input type="text" formControlName="firstname" class="form-control" placeholder="Restaurant" required>
+					                </div>
+
+									<!-- Form Input -->
+					                <div class="col-lg-6">
+										<label>Téléphone: </label>
+					                	<input type="text" formControlName="phonenumber" class="form-control phone" placeholder="+261" required>
+					                </div>
+
+					                <!-- Form Input -->
+					                <div class="col-lg-6">
+										<label>Email: </label>
+					                	<input type="email" formControlName="email" class="form-control email" placeholder="Email Address*" required>
+					                </div>
+
+					                <!-- Form Input -->
+					                <div class="col-lg-6">
+										<label>Mots de passe: </label>
+					                	<input type="password" formControlName="password" class="form-control" placeholder="Password" required>
+					                </div>
+
+									<!-- Form Textarea -->
+					                <div class="col-md-12">
+                                        <div class="custom-file">
+											<label>Image :</label>
+                                            <input type="file" (change)="selectFile($event)" formControlName="avatar" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" for="customFile">{{ fileName }}</label>
+                                        </div>
+                                    </div>
+					                <!-- Form Message -->
+					                <div class="col-md-12 booking-form-msg text-center">
+					                	<div class="sending-msg"><span class="loading"></span></div>
+									</div>
+								</form>
+								<!-- End Form -->
+							 </div>
+
+				 		</div>	<!-- END BOOKING FORM -->
+
+                    </div>
+    	<!-- End row -->
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-md btn-salmon tra-salmon-hover" data-dismiss="modal" (click)="addRestaurant()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal delete restaurant-->
+  <div  *ngIf="currentResto" class="modal fade" id="deleteModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			Vous voulez vraiment supprimer {{ currentResto.firstname }} ?
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">
+				<i class="fa fa-times"></i> Non
+			</button>
+			<button type="button" class="btn btn-md btn-salmon tra-salmon-hover" data-dismiss="modal" (click)="confirmDelete()">
+				<i class="fa fa-check"></i> Oui
+			</button>
+		</div>
+	  </div>
+	</div>
+  </div>

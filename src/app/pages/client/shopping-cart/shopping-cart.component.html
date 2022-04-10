@@ -1,0 +1,112 @@
+<!-- CART PAGE ============================================= -->
+<section *ngIf="cartExist"  id="cart-1" class="wide-100 cart-page division">
+	<div class="container-fluid">
+		<!-- CART TABLE -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="cart-table mb-70">
+					<table id="myTable">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Price</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total</th>
+								<th scope="col">Delete</th>
+							</tr>
+							</thead>
+
+							<tbody>
+								<!-- CART ITEM #1 -->
+								<tr *ngFor="let order of cart.plats; let i = index" >
+									<td data-label="Product" class="product-name">
+										<!-- Preview -->
+										<div class="cart-product-img">
+											<img [src]="order.plat.avatar" alt="cart-preview">
+										</div>
+										<!-- Description -->
+										<div class="cart-product-desc">
+											<h5 class="h5-sm">{{order.plat.designation}}</h5>
+										</div>
+
+									</td>
+
+									<td data-label="Price" class="product-price"><h5 class="h5-md">{{order.plat.sellprice}}</h5></td>
+									<td data-label="Quantity" class="product-qty">
+										<input class="qty" (input)="setQuantity($event,i)" type="number" min="1" [value]="order.quantity">
+									</td>
+									<td data-label="Total" class="product-price-total"><h5 class="h5-md">{{order.totalsellprice}}</h5></td>
+									<td data-label="Delete" class="td-trash" (click)="removeToCart(i)" ><i class="far fa-trash-alt"></i></td>
+
+								</tr>
+							</tbody>
+
+					</table>
+				</div>
+			</div>
+      	<!-- CHECKOUT -->
+			<div class="col-lg-4">
+				<div class="cart-checkout bg-lightgrey">
+
+					<!-- Title -->
+					<h5 class="h5-lg">Panier</h5>
+
+					<!-- Table -->
+					<table>
+						<tbody>
+							<tr>
+								<td>Sous-total</td>
+								<td> </td>
+								<td class="text-right">{{cart.totalsellprice}} Ar</td>
+							</tr>
+							<tr>
+								<td>Frais</td>
+								<td> </td>
+								<td class="text-right">{{cart.frais}} Ar</td>
+							</tr>
+							<tr class="last-tr">
+								<td>Total</td>
+								<td> </td>
+								<td class="text-right">{{totalWithFrais}} Ar</td>
+							</tr>
+							</tbody>
+					</table>
+
+					<!-- Button -->
+					<button class="btn btn-md btn-salmon tra-salmon-hover" data-toggle="modal" data-target="#confirmModal">Valider ma commande</button>
+
+				</div>
+			</div>	<!-- END CHECKOUT -->
+
+		</div>	<!-- END CART TABLE -->
+
+	</div>	   <!-- End container -->
+</section>
+
+<h1 *ngIf="!cartExist">{{message}}</h1>
+<!-- END CART PAGE -->
+
+  <!-- Modal confirm command-->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+			Valider ma commande
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-md btn-red tra-red-hover" data-dismiss="modal">
+				<i class="fa fa-times"></i> Non
+			</button>
+			<button type="button" (click)="confirmCommand()"  data-dismiss="modal" class="btn btn-md btn-salmon tra-salmon-hover">
+				<i class="fa fa-check"></i> Oui
+			</button>
+		</div>
+	  </div>
+	</div>
+  </div>
