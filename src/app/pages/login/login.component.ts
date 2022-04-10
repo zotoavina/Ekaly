@@ -76,7 +76,8 @@ export class LoginComponent implements OnInit {
     this.userServ.insert(user).subscribe( (response: ResponseData) => {
       console.log(response);
       if(response.code == 202){
-        this.redirection();
+        this.addProfilToStorage(response.data);
+         this.redirection();
       }else{
         this.errorRegister = response.message;
       }
@@ -93,10 +94,7 @@ export class LoginComponent implements OnInit {
     this.userServ.login(credentials).subscribe( (response: ResponseData) => {
       if(response.code == 202){
         console.log(response);
-        let profil: Profil = response.data;
-        profil.password ="password";
-        this.stroageServ.setStorage("profil", profil);
-        this.connectedUser = profil;
+        this.addProfilToStorage(response.data);
         this.redirection();
       }else{
         this.errorLogin = response.message;
@@ -107,6 +105,12 @@ export class LoginComponent implements OnInit {
 
   changeState(): void{
     this.isLogin = !this.isLogin;
+  }
+
+  addProfilToStorage(profil: Profil){
+    profil.password ="password";
+    this.stroageServ.setStorage("profil", profil);
+    this.connectedUser = profil;
   }
 
   redirection(){
