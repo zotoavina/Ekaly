@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { baseUrl } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ResponseData } from '../models/response-data';
+import { DataService } from './data.service';
 
 
 @Injectable({
@@ -12,10 +13,10 @@ import { ResponseData } from '../models/response-data';
 
 export class UserService {
   private url = baseUrl.api
-  constructor(private httpClient: HttpClient) { }
+  constructor(private dataService: DataService, private httpClient : HttpClient) { }
 
   getAllUser(){
-    return this.httpClient.get(this.url.concat("user/all"));
+    return this.dataService.getData("user/all");
   }
 
 
@@ -28,7 +29,7 @@ export class UserService {
   }
 
   getById(profilId: any): Observable<ResponseData>{
-    return this.httpClient.get<ResponseData>(this.url.concat( "user/" + profilId ));
+    return this.dataService.getData("user/" + profilId );
   }
 
 

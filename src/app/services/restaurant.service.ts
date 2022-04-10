@@ -28,15 +28,15 @@ export class RestaurantService {
   }
 
   deleteRestaurant(resto: any) : Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/delete'), resto);
+    return this.dataService.postData('restaurants/delete', resto);
   }
 
   insertPlat(restoData : FormData): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/addPlat'), restoData);
+    return this.dataService.postData('restaurants/addPlat', restoData);
   }
 
   deletePlat(resto : any): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl("restaurants/delete/plat"), resto);
+    return this.dataService.postData("restaurants/delete/plat", resto);
   }
 
 
