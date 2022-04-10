@@ -4,9 +4,11 @@ const jwt = require('../helpers/jwt.helper');
 
 async function login({ email, password }) {
   const profil = await Profil.findOne({email});
+  console.log("start identification");
   console.log(profil);
   if(profil == null) throw new Error("Incorrect Email or Password");
   if(bcrypt.compareSync(password, profil.password)){
+      console.log("Compare password");
       const token = jwt.generateAccessToken(email);
       return {...profil.toJSON(), token}
   }
@@ -19,8 +21,10 @@ async function register(params){
   const salt = bcrypt.genSaltSync(10);
   params.password = bcrypt.hashSync(password, salt);
   params.state = 1;
-  const profil = new Profil(params)
-  return await profil.save();
+  var profil = new Profil(params)
+  profil = await profil.save();
+  profil.password = password;
+  return login(profil);
 }
 
 async function getById(id) {
@@ -28,7 +32,7 @@ async function getById(id) {
 }
 
 async function updateProfil(profil){
-  await profil.save();
+  return await profil.save();
 }
 
 async function findAllByType(types){

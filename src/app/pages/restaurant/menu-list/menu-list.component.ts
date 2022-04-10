@@ -41,19 +41,23 @@ export class MenuListComponent implements OnInit {
     this.getRestaurantParameter();
   }
 
+  setRestaurant(restaurant: Profil){
+    this.restaurant = restaurant;
+    this.plats = this.restaurant.plats;
+         this.plats?.forEach( (plat:any) => {
+          plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
+    });
+  }
+
   getRestaurantParameter(){
     console.log(this.activatedRoute.snapshot.paramMap.get("id"));
     this.profilService.getById( this.activatedRoute.snapshot.paramMap.get("id") ).subscribe( (response : ResponseData) => {
        if(response.code = 202){
-         this.restaurant = response.data;
-         this.plats = this.restaurant.plats;
-         this.plats?.forEach( (plat:any) => {
-          plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
-        });
+          this.setRestaurant(response.data);
+        }
+      });
          console.log(this.restaurant);
          console.log(this.plats);
-       }
-    })
   }
 
   getConnectedUser(){
@@ -83,7 +87,11 @@ export class MenuListComponent implements OnInit {
     this.formData.set("id",this.restaurant.id);
     this.formData.set("plat",JSON.stringify(plat));
     console.log(this.formData.get("restaurant"));
-    this.restaurantServ.insertPlat(this.formData).subscribe((res: ResponseData) =>console.log(res));
+    this.restaurantServ.insertPlat(this.formData).subscribe(
+      (response: ResponseData) =>{
+        this.setRestaurant(response.data);
+      }
+    );
   }
 
   public selectFile(event: any){

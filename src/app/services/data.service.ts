@@ -15,8 +15,8 @@ export class DataService {
   postData(url: string, dataObject: any): Observable<ResponseData> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // 'Accept': 'application/json',
+        // 'Content-Type': 'application/json',
         // 'Authorization': 'Bearer ' + sessionStorage.getItem('token')
         'Authorization': 'Bearer ' + this.storageService.getStorage("profil").token
       })
@@ -27,8 +27,8 @@ export class DataService {
   getData(url: string): Observable<ResponseData> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // 'Accept': 'application/json',
+        // 'Content-Type': 'application/json',
         // 'Authorization': 'Bearer ' + sessionStorage.getItem('token')
         'Authorization': 'Bearer ' + this.storageService.getStorage("profil").token
       })

@@ -6,6 +6,7 @@ import { Cart } from '../models/cart';
 import { Order } from '../models/order';
 import { Profil } from '../models/profil';
 import { ResponseData } from '../models/response-data';
+import { DataService } from './data.service';
 import { StorageService } from './storage.service';
 import { UrlService } from './url.service';
 
@@ -19,7 +20,8 @@ export class CartService {
   constructor(
   private storageServ: StorageService,
   private http: HttpClient,
-  private urlService: UrlService
+  private urlService: UrlService,
+  private dataService : DataService
   ) { }
 
   checkCart(){
@@ -72,7 +74,7 @@ export class CartService {
   }
 
   public addCommand(cart: Cart): Observable<ResponseData>{
-    return this.http.post<ResponseData>(this.urlService.apiUrl('orders'), cart);
+    return this.dataService.postData('orders', cart);
   }
 
 }
