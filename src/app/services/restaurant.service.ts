@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
 import { ResponseData } from '../models/response-data';
+import { DataService } from './data.service';
 import { UrlService } from './url.service';
 
 @Injectable({
@@ -14,27 +15,28 @@ export class RestaurantService {
 
   constructor(
     private httpClient : HttpClient,
-    private urlService: UrlService
+    private urlService: UrlService,
+    private dataService: DataService
   ) { }
 
   getRestaurant(): Observable<ResponseData>{
-    return this.httpClient.get<ResponseData>(this.url.concat('restaurants'));
+    return this.dataService.getData('restaurants');
   }
 
   insertRestaurant(restoData : FormData): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants'), restoData);
+    return this.dataService.postData('restaurants', restoData);
   }
 
   deleteRestaurant(resto: any) : Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/delete'), resto);
+    return this.dataService.postData('restaurants/delete', resto);
   }
 
   insertPlat(restoData : FormData): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl('restaurants/addPlat'), restoData);
+    return this.dataService.postData('restaurants/addPlat', restoData);
   }
 
   deletePlat(resto : any): Observable<ResponseData>{
-    return this.httpClient.post<ResponseData>(this.urlService.apiUrl("restaurants/delete/plat"), resto);
+    return this.dataService.postData("restaurants/delete/plat", resto);
   }
 
 

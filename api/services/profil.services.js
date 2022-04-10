@@ -5,10 +5,12 @@ const jwt = require('../helpers/jwt.helper');
 async function login({ email, password }) {
   const profil = await Profil.findOne({email});
   console.log(profil);
+  if(profil == null) throw new Error("Incorrect Email or Password");
   if(bcrypt.compareSync(password, profil.password)){
       const token = jwt.generateAccessToken(email);
       return {...profil.toJSON(), token}
   }
+  throw new Error("Incorrect Email or Password");
 }
 
 
@@ -18,7 +20,7 @@ async function register(params){
   params.password = bcrypt.hashSync(password, salt);
   params.state = 1;
   const profil = new Profil(params)
-  await profil.save();
+  return await profil.save();
 }
 
 async function getById(id) {

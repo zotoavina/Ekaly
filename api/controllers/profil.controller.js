@@ -10,14 +10,14 @@ const profilController = (url , router) => {
     const credentials = req.body;
      profilService.login(credentials).then(
        (profil) => response.success(res, profil, "Log in success")
-     )
+     ).catch( err => response.error(res, err.message));
   } );
 
   // inscription
   router.post( `${url}`, (req, res) => {
     profilService.register(req.body).then(
       () => response.success(res, null, "Registration success")
-    ).catch( err => response.error(res, "Error during registration") );
+    ).catch( err => response.error(res, "An error occured during the registration") );
   })
 
   // find profil  by id
