@@ -31,7 +31,6 @@ export class OrderListComponent implements OnInit {
     this.orderServ.findEkalyCommands().subscribe((res: ResponseData) => {
         if(res.code === 202){
           this.commands = res.data;
-          console.log(this.commands);
         }
       });
   }
@@ -40,7 +39,6 @@ export class OrderListComponent implements OnInit {
     this.delivererServ.getAllDeliverers().subscribe((res: ResponseData) =>{
       if(res.code === 202){
         this.deliverers = res.data;
-        console.log(this.deliverers);
       }
     });
 
@@ -48,13 +46,10 @@ export class OrderListComponent implements OnInit {
 
   changeDeliverer(event: any){
     let ind = event.target.value;
-    console.log(ind);
     this.deliverer = this.deliverers[ind];
-    console.log(this.deliverer);
   }
 
   assignCommand(){
-    console.log(this.deliverer);
     if(this.deliverer != null){
       this.deliverer.password="password";
       let request={
@@ -62,7 +57,6 @@ export class OrderListComponent implements OnInit {
         deliverer: this.deliverer
       }
       this.orderServ.AssignCommandDeliverer(request).subscribe((res: ResponseData) =>{
-        console.log(res);
         if(res.code === 202){
             console.log(res.message);
         }

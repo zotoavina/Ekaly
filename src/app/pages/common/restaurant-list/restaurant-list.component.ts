@@ -11,7 +11,7 @@ import { UrlService } from 'src/app/services/url.service';
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
-  styleUrls: ['./restaurant-list.component.css']
+  styleUrls: ['./restaurant-list.component.scss']
 })
 export class RestaurantListComponent implements OnInit {
   spinActive : boolean = true;
@@ -48,11 +48,9 @@ export class RestaurantListComponent implements OnInit {
     this.restaurantServ.getRestaurant().subscribe( (response : ResponseData) => {
         if(response.code == 202){
           this.restaurants = response.data;
-          console.log(this.restaurants);
           this.restaurants.forEach( (element:any) => {
             element.avatar = this.urlServ.apiUrl(element.avatar, false);
           });
-          console.log(this.restaurants);
           this.spinActive = false;
         }
     })
@@ -60,7 +58,6 @@ export class RestaurantListComponent implements OnInit {
 
   getConnectedUser(){
     this.userConnected = this.storageServ.getStorage("profil");
-    console.log(this.userConnected);
     this.clientType = this.userConnected.type === "client";
   }
 
@@ -71,12 +68,9 @@ export class RestaurantListComponent implements OnInit {
     resto.plats = [];
     this.restoData.set("restaurant", JSON.stringify(resto));
     this.restaurantServ.insertRestaurant(this.restoData).subscribe( (response: ResponseData) => {
-      console.log(response);
       if(response.code == 202){
         response.data.avatar = this.urlServ.apiUrl(response.data.avatar, false);
         this.restaurants.push( response.data );
-      }else{
-        console.log(response);
       }
     })
   }
@@ -102,7 +96,6 @@ export class RestaurantListComponent implements OnInit {
     const files = event.target.files;
     if(files && files.length > 0){
       this.restoData.set("avatar", files[0]);
-      console.log(files[0]);
       this.fileName = files[0].name;
     }
   }
@@ -116,13 +109,10 @@ export class RestaurantListComponent implements OnInit {
 
 
   seePlates(resto: any){
-    console.log("see plates");
-    console.log(resto);
-    console.log(this.clientType);
     if(this.clientType) {
-      this.router.navigate(["ekaly/app/plats/", {id: resto.id}]);
+      this.router.navigate(["app/plats/", {id: resto.id}]);
     }else{
-      this.router.navigate(["ekaly/app/restaurants/",  resto.id]);
+      this.router.navigate(["app/restaurants/",  resto.id]);
     }
   }
 

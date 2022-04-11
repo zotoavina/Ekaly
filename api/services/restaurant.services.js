@@ -26,6 +26,7 @@ async function addPlates(restaurant, files){
     console.log(resto);
     restaurant.plat.status = true;
     restaurant.plat.avatar = fileData.data.path;
+    restaurant.plat.parentresto = restaurant.id;
     resto.plats.push(restaurant.plat);
     return profilService.updateProfil(resto);
 }

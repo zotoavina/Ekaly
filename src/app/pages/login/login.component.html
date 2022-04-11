@@ -10,8 +10,8 @@
 <section class="fxt-template-animation fxt-template-layout29">
     <div class="container-fluid">
         <div class="row">
-            <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide" data-vegas-options='{"delay":5000, "timer":false,"animation":"kenburns", "transition":"swirlLeft", "slides":[{"src": "./assets/img/3.jpg"}, {"src": "./assets/img/3.jpg"}, {"src": "./assets/img/3.jpg"}]}'>
-              <img src="./assets/img/3.jpg"/>
+            <div class="vegas-container col-md-6 col-12 fxt-bg-img" id="vegas-slide" >
+              <!-- <img src="./assets/img/3.jpg"/> -->
               <div class="fxt-page-switcher">
                     <a  class="switcher-text1 active" (click)="changeState()">Login</a>
                     <a class="switcher-text1" (click)="changeState()">Register</a>
@@ -20,7 +20,7 @@
             <div *ngIf="isLogin" class="col-md-6 col-12 fxt-bg-color">
                 <div class="fxt-content">
                     <div class="fxt-header">
-                        <a href="login-29.html" class="fxt-logo"><img src="./assets/img/logo-29.png" alt="Logo"></a>
+                        <a href="login-29.html" class="fxt-logo"><img src="./assets/images/logo.PNG" alt="Logo"></a>
                     </div>
                     <div class="fxt-form">
                         <div class="fxt-transformY-50 fxt-transition-delay-1">
@@ -53,22 +53,17 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
             <div *ngIf="!isLogin" class="col-md-6 col-12 fxt-bg-color">
               <div class="fxt-content">
                 <div class="fxt-header">
-                  <a class="fxt-logo"><img src="img/logo-29.png" alt="Logo"></a>
+                  <a class="fxt-logo"><img src="./assets/images/logo.PNG" alt="Logo"></a>
                 </div>
                 <div class="fxt-form">
                   <div class="fxt-transformY-50 fxt-transition-delay-1">
                     <h2>Register</h2>
                   </div>
-                  <div class="fxt-transformY-50 fxt-transition-delay-2">
-                    <p>Create an account free and enjoy it</p>
-                  </div>
-
                   <!-- Inscription Form  -->
                   <form [formGroup]="inscriptionForm" (ngSubmit)="inscription()">
 

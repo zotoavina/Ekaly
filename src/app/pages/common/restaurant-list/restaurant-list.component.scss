@@ -1,0 +1,51 @@
+.cart-product-img img {
+  width: 120px !important;
+  height: 60px !important;
+}
+body{
+  background-color:#FCBF49;
+}
+.wrapper{margin:10vh}
+//post card styles
+
+.card{
+  border: none;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  overflow:hidden;
+  border-radius:20px;
+  min-height: 250px;
+  width: 250px;
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
+
+ @media (max-width: 768px) {
+  min-height:350px;
+}
+
+@media (max-width: 420px) {
+  min-height:300px;
+}
+
+ &.card-has-bg{
+ transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  background-size:120%;
+  background-repeat:no-repeat;
+  background-position: center center;
+}
+
+ .card-meta{color:orange}
+ .card-body{
+   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+ &:hover {
+   .card-body{
+     margin-top:30px;
+     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+   }
+ cursor: pointer;
+ transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+ .card-img-overlay {
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+  background: linear-gradient(223deg, rgba(35, 79, 109, 0.3785889356) 50%, #4f3315 100%);
+}
+}

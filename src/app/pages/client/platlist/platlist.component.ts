@@ -31,7 +31,6 @@ export class PlatlistComponent implements OnInit {
   }
 
   getRestaurantParameter(){
-    console.log(this.activatedRoute.snapshot.paramMap.get("id"));
     if(!this.initial) return;
     this.profilService.getById( this.activatedRoute.snapshot.paramMap.get("id") ).subscribe( (response : ResponseData) => {
        if(response.code = 202){
@@ -40,17 +39,14 @@ export class PlatlistComponent implements OnInit {
          this.plats?.forEach( (plat:any) => {
           plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
         });
-         console.log(this.restaurant);
-         console.log(this.plats);
        }
     })
   }
 
   addToCart(plat: Plat){
-    plat.parentResto = this.restaurant.id;
+    plat.parentresto = this.restaurant.id;
     let order : Order = new Order(plat,1);
     this.cartServ.addToCart(order);
-    console.log(JSON.parse(localStorage.getItem("cart") || "{}"));
   }
 
 }
