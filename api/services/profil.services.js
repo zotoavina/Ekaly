@@ -24,6 +24,7 @@ async function register(params){
   var profil = new Profil(params)
   profil = await profil.save();
   profil.password = password;
+  console.log(profil);
   return login(profil);
 }
 

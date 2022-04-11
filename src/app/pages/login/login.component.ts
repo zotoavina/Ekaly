@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
     };
     console.log(credentials);
     this.userServ.login(credentials).subscribe( (response: ResponseData) => {
+      console.log(response)
       if(response.code == 202){
         console.log(response);
         this.addProfilToStorage(response.data);
@@ -114,7 +115,7 @@ export class LoginComponent implements OnInit {
   }
 
   redirection(){
-    const url = '/ekaly/app/restaurants';
+    const url = 'app/restaurants';
     console.log(this.connectedUser?.type);
     if(this.connectedUser?.type === "client") this.router.navigateByUrl(url);
     if(this.connectedUser?.type === "restaurant") this.router.navigate([url + '/', this.connectedUser.id]);
