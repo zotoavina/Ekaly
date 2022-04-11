@@ -7,8 +7,8 @@ export const environment = {
 };
 
 export const baseUrl = {
-  base:'https://m1p9mean-zotoavina.herokuapp.com/',
-  api:'http://m1p9mean-zotoavina.herokuapp.com/api/'
+  base:'http://localhost:3030/',
+  api:'http://localhost:3030/api/'
 };
 
 

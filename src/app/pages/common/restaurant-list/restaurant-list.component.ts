@@ -11,7 +11,7 @@ import { UrlService } from 'src/app/services/url.service';
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
-  styleUrls: ['./restaurant-list.component.css']
+  styleUrls: ['./restaurant-list.component.scss']
 })
 export class RestaurantListComponent implements OnInit {
   spinActive : boolean = true;
@@ -120,9 +120,9 @@ export class RestaurantListComponent implements OnInit {
     console.log(resto);
     console.log(this.clientType);
     if(this.clientType) {
-      this.router.navigate(["ekaly/app/plats/", {id: resto.id}]);
+      this.router.navigate(["app/plats/", {id: resto.id}]);
     }else{
-      this.router.navigate(["ekaly/app/restaurants/",  resto.id]);
+      this.router.navigate(["app/restaurants/",  resto.id]);
     }
   }
 
