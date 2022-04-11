@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
     private toastServ: ToastrService
     ) {
     this.inscriptionForm = formBuilder.group({
-      firstName:["Rasoaharisoa", Validators.required],
-      lastName:["Zotoavina",Validators.required],
-      email:["zotoavinanantenaina@gmail.com",Validators.required],
+      firstName:["Rakotoarisoa", Validators.required],
+      lastName:["Mamy",Validators.required],
+      email:["mamy@gmail.com",Validators.required],
       address:["K04 052 BIS Ivato Aéroport", Validators.required],
       phoneNumber:["0328818232", Validators.required],
       password:["123456", [Validators.required, Validators.minLength(6)]]
