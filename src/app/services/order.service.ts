@@ -25,4 +25,8 @@ export class OrderService {
       return this.dataService.postData('orders/deliverer', request);
     }
 
+    public findRestaurantCommands(resto: any): Observable<ResponseData>{
+      return this.dataService.getData('orders/restaurant/'+resto);
+    }
+
 }

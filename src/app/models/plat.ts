@@ -6,7 +6,7 @@ export class Plat {
   public buyprice: number;
   public description: string;
   public avatar: string;
-  public parentResto!: string;
+  public parentresto!: string;
   public status : boolean;
 
   constructor(

@@ -11,6 +11,8 @@ import { StorageService } from 'src/app/services/storage.service';
 export class DefaultLayoutComponent implements OnInit {
 
   connectedUser ?: Profil;
+  nom: string = "Rasoaharisoa Nantenaina ZoToavina";
+  date: string = new Date().getFullYear().toString();
 
   constructor(
     private router : Router,

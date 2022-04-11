@@ -15,6 +15,7 @@ import { MenuListComponent } from './pages/restaurant/menu-list/menu-list.compon
 import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
 import { ToastrModule } from 'ngx-toastr';
+import { OrderComponent } from './pages/restaurant/order/order.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     ShoppingCartComponent,
     PlatlistComponent,
     DelevererListComponent,
-    OrderListComponent
+    OrderListComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

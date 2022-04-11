@@ -1,33 +1,21 @@
-
 		<header id="header-3" class="header navik-header header-transparent header-shadow">
 			<div class="container">
-
-
 				<!-- NAVIGATION MENU -->
 				<div class="navik-header-container">
-
-
 					<!-- CALL BUTTON -->
 				    <div class="callusbtn"><a href="tel:123456789"><i class="fas fa-phone"></i></a></div>
-
-
 					<!-- LOGO IMAGE -->
-	                <div class="logo" data-mobile-logo="./assets/images/logo-01.png" data-sticky-logo="images/logo-01.png">
-	                	<a href="#hero-6"><img src="./assets/images/logo-01.png" alt="header-logo"/></a>
+	                <div class="logo" data-mobile-logo="./assets/images/logo.PNG" data-sticky-logo="./assets/images/logo.PNG">
+	                	<a href="#hero-6"><img src="./assets/images/logo.PNG" alt="header-logo"/></a>
 					</div>
-
-
 					<!-- BURGER MENU -->
 					<div class="burger-menu">
 						<div class="line-menu line-half first-line"></div>
 						<div class="line-menu"></div>
 						<div class="line-menu line-half last-line"></div>
 					</div>
-
-
 					<!-- MAIN MENU -->
 	                <nav class="navik-menu menu-caret navik-yellow">
-
                     <!-- Client menuw -->
 	                	<ul class="top-list" *ngIf="connectedUser?.type === 'client'">
 
@@ -57,7 +45,7 @@
 	                    <li  [routerLink]="['restaurants', connectedUser?.id]"><a href="#" routerLinkActive="router-link-active" >Menus</a></li>
 
                       <!-- Menu -->
-	                    <li><a href="#">Orders</a></li>
+	                    <li><a [routerLink]="['restaurant/orders']">Orders</a></li>
 
 	                    <!-- MEGA MENU -->
 	                    <li class="mega-menu" (click)="logOut()"><a href="#">Logout</a></li>
@@ -116,22 +104,16 @@
 		<!-- PAGE CONTENT
 		============================================= -->
 		<div id="page" class="page">
-
             <!-- HERO-6
 			============================================= -->
 			<section id="hero-6" class="hero-section division">
-
-
 				<!-- SLIDER -->
 				<div class="slider mt-1001">
 			    	<ul class="slides">
-
-
 				     	<!-- SLIDE #1 -->
 				      	<li id="slide-1">
-
 					        <!-- Background Image -->
-				        	<img src="./assets/images/slider/slide-1.jpg" alt="slide-background">
+				        	<img src="./assets/images/slider/slide-1.jpg" style="background-image: url(./assets/images/slider/slide-1.jpg);" alt="slide-background">
 
 							<!-- Image Caption -->
 		       				<div class="caption d-flex align-items-center left-align">
@@ -157,7 +139,7 @@
 				      	<li id="slide-2">
 
 				        	<!-- Background Image -->
-				        	<img src="./assets/images/slider/slide-2.jpg" alt="slide-background">
+				        	<img src="./assets/images/slider/slide-2.jpg"  style="background-image: url(./assets/images/slider/slide-2.jpg);" alt="slide-background">
 
 							<!-- Image Caption -->
 		       				<div class="caption d-flex align-items-center left-align">
@@ -183,7 +165,7 @@
 				      	<li id="slide-3">
 
 				      		<!-- Background Image -->
-				        	<img src="./assets/images/slider/slide-3.jpg" alt="slide-background">
+				        	<img src="./assets/images/slider/slide-3.jpg" style="background-image: url(./assets/images/slider/slide-3.jpg);" alt="slide-background">
 
 				        	<!-- Image Caption -->
 		       			 	<div class="caption d-flex align-items-center left-align">
@@ -222,15 +204,17 @@
 						<div class="row d-flex align-items-center">
 
 
-                            <div class="col-md-3 col-lg-4">
-								<div class="footer-logo"><img src="./assets/images/logo-01.png" style="max-height: 50px;" alt="footer-logo"/></div>
-                            </div>
+                <div class="col-md-3 col-lg-4">
+								    <div class="footer-logo">
+                      <img src="./assets/images/logo.PNG" style="max-height: 50px;" alt="footer-logo"/>
+                    </div>
+                </div>
 
 
 							<!-- FOOTER COPYRIGHT -->
 							<div class="col-md-5 col-lg-5">
 								<div class="footer-copyright">
-									<p>&copy; 2020 Testo. All Rights Reserved</p>
+									<p>&copy;{{date}} . {{nom}}</p>
 								</div>
 							</div>
 
@@ -248,5 +232,5 @@
 				</div>	   <!-- End container -->
             </footer>
             <!-- END FOOTER-4 -->
-        </div>
+    </div>
         <!-- END PAGE CONTENT -->

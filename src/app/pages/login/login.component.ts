@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
 import { StorageService } from 'src/app/services/storage.service';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private userServ: UserService,
     private formBuilder : FormBuilder,
     private router: Router,
-    private stroageServ: StorageService
+    private stroageServ: StorageService,
+    private toastServ: ToastrService
     ) {
     this.inscriptionForm = formBuilder.group({
       firstName:["Rasoaharisoa", Validators.required],

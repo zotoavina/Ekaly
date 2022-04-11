@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 import { OrderListComponent } from './pages/common/order-list/order-list.component';
 import { DelevererListComponent } from './pages/ekaly/deleverer-list/deleverer-list.component';
+import { OrderComponent } from './pages/restaurant/order/order.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path:'orders',
         component: OrderListComponent
+      },
+      {
+        path:'restaurant/orders',
+        component: OrderComponent
       },
       {
         path: 'deliverers',
