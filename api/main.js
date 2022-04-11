@@ -7,8 +7,8 @@ const delivererController = require('./controllers/deliverer.controller')
 const mailer = require('./helpers/mailer.helper');
 
 
-// const uri = "mongodb://localhost:27017/ekaly";
-const uri = "mongodb+srv://zotoavina:vololona@cluster0.axvxn.mongodb.net/ekaly";
+const uri = "mongodb://localhost:27017/ekaly";
+// const uri = "mongodb+srv://zotoavina:vololona@cluster0.axvxn.mongodb.net/ekaly";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
