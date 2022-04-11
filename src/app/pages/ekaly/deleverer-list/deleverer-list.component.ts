@@ -54,7 +54,7 @@ export class DelevererListComponent implements OnInit {
   selectFile(event: any){
     const files = event.target.files;
     if(files && files.length > 0){
-      this.delivererData.set("avatar", files[0]);p
+      this.delivererData.set("avatar", files[0]);
       this.fileName = files[0].name;
     }
   }
