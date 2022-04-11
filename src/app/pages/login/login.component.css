@@ -12829,7 +12829,7 @@ ul {
   flex-wrap: wrap;
 }
 .fxt-template-layout29 .fxt-bg-color {
-  background-color: #ffffff;
+  background-color: #f4f4f4;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12840,7 +12840,7 @@ ul {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 60px 30px 52px;
+  /* padding: 60px 30px 52px; */
 }
 @media only screen and (max-width: 767px) {
   .fxt-template-layout29 .fxt-bg-color {
@@ -12852,7 +12852,9 @@ ul {
     padding: 50px 15px 42px;
   }
 }
+
 .fxt-template-layout29 .fxt-bg-img {
+  background: url("../../../assets/img/3.jpg");
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center center;
@@ -12922,7 +12924,7 @@ ul {
 .fxt-template-layout29 .fxt-content {
   max-width: 450px;
   width: 100%;
-  padding: 50px 15px 30px;
+  /* padding: 50px 15px 30px; */
 }
 @media only screen and (max-width: 767px) {
   .fxt-template-layout29 .fxt-content {
