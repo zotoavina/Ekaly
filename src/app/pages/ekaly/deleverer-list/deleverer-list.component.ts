@@ -54,18 +54,16 @@ export class DelevererListComponent implements OnInit {
   selectFile(event: any){
     const files = event.target.files;
     if(files && files.length > 0){
-      this.delivererData.set("avatar", files[0]);
+      this.delivererData.set("avatar", files[0]);p
       this.fileName = files[0].name;
     }
   }
 
   addDeliverer(){
     var deliverer = this.delivererForm.value;
-    console.log(deliverer);
     this.delivererData.set("deliverer", JSON.stringify( deliverer) );
 
     this.delivererServ.addDeliverer(this.delivererData).subscribe( (response : ResponseData) =>{
-      console.log(response);
       if(response.code == 202){
         this.delivererData.delete("avatar");
         this.delivererData.delete("deliverer");

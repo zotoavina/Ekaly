@@ -39,13 +39,11 @@ export class OrderComponent implements OnInit {
     this.orderServ.findRestaurantCommands(this.connectedUser.id).subscribe((res: any) => {
       if(res.code === 202){
           this.commands = res.data;
-          console.log(this.commands);
           this.commands.forEach(command => {
             let orderTemp = command.plats.filter((pl) =>  pl.plat.parentresto === this.connectedUser.id);
             command.plats = orderTemp;
             this.cartServ.setTotalPrice(command);
           });
-          console.log(this.commands);
         }
       });
   }

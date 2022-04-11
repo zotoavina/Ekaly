@@ -45,8 +45,6 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("initialisation");
-    // this.login();
   }
 
   get firstName() { return this.inscriptionForm.get('firstName'); }
@@ -58,9 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   getAllUser(){
-    this.userServ.getAllUser().subscribe( response => {
-      console.log(response);
-    })
+    this.userServ.getAllUser().subscribe( response => {})
   }
 
   inscription(){
@@ -74,9 +70,7 @@ export class LoginComponent implements OnInit {
       password: this.inscriptionForm.get("password")?.value,
       type: "client"
     };
-    console.log(user);
     this.userServ.insert(user).subscribe( (response: ResponseData) => {
-      console.log(response);
       if(response.code == 202){
         this.addProfilToStorage(response.data);
          this.redirection();
@@ -92,16 +86,12 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get("email")?.value,
       password: this.loginForm.get("password")?.value
     };
-    console.log(credentials);
     this.userServ.login(credentials).subscribe( (response: ResponseData) => {
-      console.log(response)
       if(response.code == 202){
-        console.log(response);
         this.addProfilToStorage(response.data);
         this.redirection();
       }else{
         this.errorLogin = response.message;
-        console.log(this.errorLogin);
       }
     })
   }
@@ -118,7 +108,6 @@ export class LoginComponent implements OnInit {
 
   redirection(){
     const url = 'app/restaurants';
-    console.log(this.connectedUser?.type);
     if(this.connectedUser?.type === "client") this.router.navigateByUrl(url);
     if(this.connectedUser?.type === "restaurant") this.router.navigate([url + '/', this.connectedUser.id]);
     if(this.connectedUser?.type === "ekaly") this.router.navigateByUrl(url);

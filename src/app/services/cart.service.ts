@@ -38,7 +38,6 @@ export class CartService {
     }else{
       cart = this.getCart();
       let index = cart.plats.findIndex((element:Order) => element.plat._id === order.plat._id);
-      console.log(index);
       if(index === -1){
         cart.plats.push(order);
       }

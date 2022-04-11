@@ -38,7 +38,6 @@ export class MenuListComponent implements OnInit {
   ) { this.setForm();}
 
   ngOnInit(): void {
-    console.log("Bonjour");
     this.getConnectedUser();
     this.getRestaurantParameter();
   }
@@ -53,19 +52,15 @@ export class MenuListComponent implements OnInit {
   }
 
   getRestaurantParameter(){
-    console.log(this.activatedRoute.snapshot.paramMap.get("id"));
     this.profilService.getById( this.activatedRoute.snapshot.paramMap.get("id") ).subscribe( (response : ResponseData) => {
        if(response.code = 202){
           this.setRestaurant(response.data);
         }
       });
-         console.log(this.restaurant);
-         console.log(this.plats);
   }
 
   getConnectedUser(){
     this.connectedUser = this.storageService.getStorage("profil");
-    console.log(this.connectedUser);
     this.clientType = this.connectedUser.type === "client";
   }
 
@@ -89,11 +84,9 @@ export class MenuListComponent implements OnInit {
     let plat: Plat = this.platesForm.value;
     this.formData.set("id",this.restaurant.id);
     this.formData.set("plat",JSON.stringify(plat));
-    console.log(this.formData.get("restaurant"));
     this.restaurantServ.insertPlat(this.formData).subscribe(
       (response: ResponseData) =>{
         if(response.code == 202){
-          console.log(response);
           this.setRestaurant(response.data);
           this.toastServ.success("Add plate with success", "SUCCESS");
         }
@@ -105,13 +98,11 @@ export class MenuListComponent implements OnInit {
     const files = event.target.files;
     if(files && files.length > 0){
       this.formData.set("avatar", files[0]);
-      console.log(files[0]);
       this.fileName = files[0].name;
     }
   }
 
   choosePlatDelete(plat: Plat){
-    console.log(plat);
     this.plat = plat;
   }
 
@@ -120,9 +111,7 @@ export class MenuListComponent implements OnInit {
       "id": this.restaurant.id,
       "plat": this.plat._id
     }
-    console.log(resto);
     this.restaurantServ.deletePlat(resto).subscribe( (response: ResponseData) => {
-      console.log(response);
       if(response.code == 202){
         this.plats?.splice( this.plats?.findIndex((pl) => pl.id = this.plat.id) );
         this.toastServ.success("Delete plate with success", "SUCCESS");
