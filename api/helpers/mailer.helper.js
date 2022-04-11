@@ -28,6 +28,15 @@ function sendMail(mailOptions){
   });
 }
 
+// app.get("/send/mail", (req, res) => {
+//   var mailOptions = {
+//     to : "zotoavinanantenaina@gmail.com"
+//   };
+//   mailer.sendMail(mailOptions);
+//   res.json({message: "OK"});
+// })
+
+
 module.exports = {
   sendMail
 }

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npx nodemon index.js",
-    "node:dev":"nodemon -r dotenv/config . dotenv_config_path=./.env.local",
+    "node:dev": "nodemon -r dotenv/config . dotenv_config_path=./.env.local",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.9",
+    "ngx-toastr": "^14.2.3",
     "nodemailer": "^6.7.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

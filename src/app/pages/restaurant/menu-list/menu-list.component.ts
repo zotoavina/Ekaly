@@ -18,7 +18,7 @@ export class MenuListComponent implements OnInit {
 
   restaurant!: Profil;
   plats : Array<Plat> | undefined = [];
-  plat: Plat =  new Plat("","Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
+  plat: Plat =  new Plat("","Burger",10000,20000,"Burger Burger","Burger"); // initialisation formulaire
   platesForm!: FormGroup;
   connectedUser!: Profil;
   formData : FormData = new FormData();
@@ -95,8 +95,12 @@ export class MenuListComponent implements OnInit {
   }
 
   public selectFile(event: any){
-    let file = event.target.files;
-    this.formData.set("avatar", file[0]);
+    const files = event.target.files;
+    if(files && files.length > 0){
+      this.formData.set("avatar", files[0]);
+      console.log(files[0]);
+      this.fileName = files[0].name;
+    }
   }
 
   choosePlatDelete(plat: Plat){
@@ -112,6 +116,12 @@ export class MenuListComponent implements OnInit {
     console.log(resto);
     this.restaurantServ.deletePlat(resto).subscribe( (response: ResponseData) => {
       console.log(response);
+      if(response.code == 202){
+        this.plats?.splice( this.plats?.findIndex((pl) => pl.id = this.plat.id) );
+
+      }else{
+
+      }
     })
   }
 

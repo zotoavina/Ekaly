@@ -32,7 +32,7 @@
 	                	<ul class="top-list" *ngIf="connectedUser?.type === 'client'">
 
 	                		<!-- Restaurants -->
-	                		<li [routerLink]="['/restaurants']" routerLinkActive="router-link-active" ><a href="#">Restaurants</a></li>
+	                		<li [routerLink]="['restaurants']" routerLinkActive="router-link-active" ><a href="#">Restaurants</a></li>
 
 	                		<!-- Menu -->
 	                    <li><a href="#" [routerLink]="['/plats']">Our Menu</a></li>
@@ -83,7 +83,7 @@
                       <!-- Orders -->
 	                    <li [routerLink]="['orders']" routerLinkActive="router-link-active" ><a href="#">Orders</a></li>
                        <!-- Deliverers -->
-	                    <li><a href="#">Deliverers</a></li>
+	                    <li [routerLink]="['deliverers']"><a href="#">Deliverers</a></li>
 
 	                    <!-- MEGA MENU -->
 	                    <li class="mega-menu" (click)="logOut()"><a href="#">Logout</a></li>

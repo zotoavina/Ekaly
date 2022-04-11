@@ -21,14 +21,6 @@ async function main(){
   restaurantController('/api/restaurants',app);
   orderController('/api/orders', app);
   delivererController('/api/deliverers', app);
-  app.get("/send/mail", (req, res) => {
-    var mailOptions = {
-      to : "zotoavinanantenaina@gmail.com"
-    };
-    mailer.sendMail(mailOptions);
-    res.json({message: "OK"});
-  })
-
 }
 
 module.exports = {main, app};

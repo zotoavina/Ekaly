@@ -45,7 +45,7 @@
                 <tr>
                   <th scope="col">Plat</th>
                                   <th scope="col">prix d'achat</th>
-                                  <th scope="col">prix</th>
+                                  <th scope="col">prix de vente</th>
                   <th scope="col">Modifier</th>
                   <th scope="col">Supprimer</th>
                 </tr>
@@ -123,7 +123,7 @@
                                           <div class="custom-file">
                         <label>Photo :</label>
                                               <input type="file" (change)="selectFile($event)" class="custom-file-input" id="customFile">
-                                              <label class="custom-file-label" for="customFile">Photo</label>
+                                              <label class="custom-file-label" for="customFile">{{ fileName }}</label>
                                           </div>
                                       </div>
 
