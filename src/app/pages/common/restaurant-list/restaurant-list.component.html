@@ -61,11 +61,11 @@ l
 			 			<div class="row">
 
               <div class="col-lg-3 col-md-6 col-sm-12"  *ngFor="let restaurant of restaurants">
-                <div class="card text-white card-has-bg click-col"  (click)="seePlates(restaurant)" style="background-image:url('http://localhost:3030/uploads/resto/1.png');">
+                <div class="card text-white card-has-bg click-col"  (click)="seePlates(restaurant)" [ngStyle]="{'background-image': 'url(' + restaurant.avatar + ')'}">
                      <img class="card-img d-none" [src]="restaurant.avatar" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
                     <div class="card-img-overlay d-flex flex-column">
                      <div class="card-body">
-                        <small class="card-meta mb-2">Leader du burger</small>
+                        <!-- <small class="card-meta mb-2">Leader du burger</small> -->
                         <h5><span _ngcontent-vdy-c51="" class="yellow-color">{{ restaurant.firstname  }}</span></h5>
                         <br>
                         <small><i class="fa fa-phone"></i> {{ restaurant.phonenumber}}</small>
@@ -75,37 +75,6 @@ l
                     </div>
                   </div>
               </div>
-
-
-			 				<!-- TEAM MEMBER #1 -->
-							<div class="col-sm-6 col-lg-3" *ngFor="let restaurant of restaurants">
-								<div class="team-member">
-
-									<!-- Team Member Photo -->
-									<div class="team-member-photo"  (click)="seePlates(restaurant)">
-
-										<img class="img-fluid" [src]="restaurant.avatar" alt="team-member-foto">
-
-										<!-- Social Icons -->
-										<div class="tm-social clearfix">
-											<ul class="text-center clearfix">
-												<li><a href="#" class="ico-facebook"><i class="fab fa-facebook-f"></i></a></li>
-												<li><a href="#" class="ico-twitter"><i class="fab fa-twitter"></i></a></li>
-												<li><a href="#" class="ico-linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-											</ul>
-										</div>
-
-									</div>
-
-									<!-- Team Member Meta -->
-									<div class="tm-meta">
-										<h5 class="h5-xs">{{ restaurant.firstname }}</h5>
-										<span class="yellow-color">  </span>
-									</div>
-
-								</div>
-							</div>
-
 
 			 			</div>
 			 		</div>	<!-- END TEAM-1 WRAPPER -->

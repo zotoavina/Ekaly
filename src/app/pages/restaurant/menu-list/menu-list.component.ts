@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Plat } from 'src/app/models/plat';
 import { Profil } from 'src/app/models/profil';
 import { ResponseData } from 'src/app/models/response-data';
@@ -18,7 +19,7 @@ export class MenuListComponent implements OnInit {
 
   restaurant!: Profil;
   plats : Array<Plat> | undefined = [];
-  plat: Plat =  new Plat("","Burger",100,200,"Burger Burger","Burger"); // initialisation formulaire
+  plat: Plat =  new Plat("","Burger",10000,20000,"Burger Burger","Burger", true); // initialisation formulaire
   platesForm!: FormGroup;
   connectedUser!: Profil;
   formData : FormData = new FormData();
@@ -32,7 +33,8 @@ export class MenuListComponent implements OnInit {
     private profilService : UserService,
     private storageService : StorageService,
     private restaurantServ: RestaurantService,
-    private urlServ: UrlService
+    private urlServ: UrlService,
+    private toastServ: ToastrService
   ) { this.setForm();}
 
   ngOnInit(): void {
@@ -47,6 +49,7 @@ export class MenuListComponent implements OnInit {
          this.plats?.forEach( (plat:any) => {
           plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
     });
+    this.plats = this.plats?.filter(plat => plat.status == true)
   }
 
   getRestaurantParameter(){
@@ -77,7 +80,7 @@ export class MenuListComponent implements OnInit {
   }
 
   public initForm(): void{
-    this.plat = new Plat("","Burger",100,200,"Burger Burger","Burger");
+    this.plat = new Plat("","Burger",10000,2000,"Burger Double cheese","Burger", true);
     this.action = true;
     this.setForm();
   }
@@ -89,14 +92,22 @@ export class MenuListComponent implements OnInit {
     console.log(this.formData.get("restaurant"));
     this.restaurantServ.insertPlat(this.formData).subscribe(
       (response: ResponseData) =>{
-        this.setRestaurant(response.data);
+        if(response.code == 202){
+          console.log(response);
+          this.setRestaurant(response.data);
+          this.toastServ.success("Add plate with success", "SUCCESS");
+        }
       }
     );
   }
 
   public selectFile(event: any){
-    let file = event.target.files;
-    this.formData.set("avatar", file[0]);
+    const files = event.target.files;
+    if(files && files.length > 0){
+      this.formData.set("avatar", files[0]);
+      console.log(files[0]);
+      this.fileName = files[0].name;
+    }
   }
 
   choosePlatDelete(plat: Plat){
@@ -112,6 +123,12 @@ export class MenuListComponent implements OnInit {
     console.log(resto);
     this.restaurantServ.deletePlat(resto).subscribe( (response: ResponseData) => {
       console.log(response);
+      if(response.code == 202){
+        this.plats?.splice( this.plats?.findIndex((pl) => pl.id = this.plat.id) );
+        this.toastServ.success("Delete plate with success", "SUCCESS");
+      }else{
+
+      }
     })
   }
 

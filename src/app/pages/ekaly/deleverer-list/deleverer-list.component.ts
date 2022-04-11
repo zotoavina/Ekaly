@@ -38,7 +38,6 @@ export class DelevererListComponent implements OnInit {
 
   getAllDeliverers(){
     this.delivererServ.getAllDeliverers().subscribe( response => {
-      console.log(response);
       if(response.code == 202){
         this.deliverers = response.data;
         this.deliverers.forEach( (deliverer:any) => {
@@ -56,7 +55,6 @@ export class DelevererListComponent implements OnInit {
     const files = event.target.files;
     if(files && files.length > 0){
       this.delivererData.set("avatar", files[0]);
-      console.log(files[0]);
       this.fileName = files[0].name;
     }
   }

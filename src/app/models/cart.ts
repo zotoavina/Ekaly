@@ -12,7 +12,7 @@ export class Cart {
   public deliverer!: Profil;
   public frais!: number;
 
-  constructor(client: Profil, order:Array<Order>){
+  constructor(client: Profil, order:Array<any>){
     this.client = client;
     this.plats = order;
     this.frais = 5000;
