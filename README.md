@@ -1,7 +1,8 @@
 # Ekaly
 # ETU 000950
 # Rasoaharisoa Nantenaina ZoToavina
-# Login et Password ekaly : 
+# Nom du site : https://m1p9mean-zotoavina.herokuapp.com/
+# Login et Password admin ekaly : 
 	login: ekaly@gmail.com
 	pwd: 123456
 	
