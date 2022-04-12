@@ -27,7 +27,6 @@ export class ShoppingCartComponent implements OnInit {
       this.cartExist = true;
       this.cart = this.cartServ.getCart();
       this.totalWithFrais = this.cartServ.setTotalWithFrais(this.cart);
-      console.log(this.cart);
     }else{
       this.cartExist = false;
       this.message = "Vous n'avez rien dans le panier!!!";
@@ -35,7 +34,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   setQuantity(event: any, index: number){
-    console.log(event.target.value);
     let quantity: number = Number.parseInt(event.target.value);
     this.cart.plats[index] = this.cartServ.setQuantityOrder(this.cart.plats[index],quantity);
     this.cartServ.setTotalPrice(this.cart);
@@ -51,7 +49,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   confirmCommand(){
-    console.log("commandé");
     this.cartServ.addCommand(this.cart).subscribe((res: ResponseData) => {
         if(res.code === 202){
           this.message = "Votre commande a été validé";

@@ -25,12 +25,10 @@ export class DefaultLayoutComponent implements OnInit {
 
   getConnectedUser(){
     this.connectedUser = this.storageServ.getStorage("profil");
-    console.log(this.connectedUser);
 
   }
 
   seeBasket(){
-    console.log("See cart");
     this.router.navigateByUrl("app/users/cart");
   }
 
