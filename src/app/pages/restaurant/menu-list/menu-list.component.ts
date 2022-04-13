@@ -44,9 +44,9 @@ export class MenuListComponent implements OnInit {
 
   setRestaurant(restaurant: Profil){
     this.restaurant = restaurant;
-    this.plats = this.restaurant.plats;
-         this.plats?.forEach( (plat:any) => {
-          plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
+    console.log(this.plats);
+    this.plats?.forEach( (plat:any) => {
+        plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
     });
     this.plats = this.plats?.filter(plat => plat.status == true)
   }

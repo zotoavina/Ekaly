@@ -35,7 +35,8 @@ export class PlatlistComponent implements OnInit {
     this.profilService.getById( this.activatedRoute.snapshot.paramMap.get("id") ).subscribe( (response : ResponseData) => {
        if(response.code = 202){
          this.restaurant = response.data;
-         this.plats = this.restaurant?.plats;
+         this.plats = this.restaurant?.plats?.filter( plat => plat.status == true);
+         console.log(this.plats);
          this.plats?.forEach( (plat:any) => {
           plat.avatar = this.urlServ.apiUrl(plat.avatar, false);
         });

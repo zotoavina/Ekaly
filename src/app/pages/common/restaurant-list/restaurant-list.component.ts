@@ -84,7 +84,7 @@ export class RestaurantListComponent implements OnInit {
   confirmDelete(){
     var resto = { id : this.currentResto.id };
     this.restaurantServ.deleteRestaurant(resto).subscribe( (response: ResponseData ) => {
-        this.restaurants.splice(  this.findResto() );
+        this.restaurants.splice(  this.findResto() , 1);
     })
   }
 

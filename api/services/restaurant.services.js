@@ -12,7 +12,7 @@ async function insertRestaurant(restaurant, files){
   console.log(fileData);
   restaurant.avatar = fileData.data.path;
   console.log(restaurant);
-  return profilService.register(restaurant);
+  return profilService.register(restaurant, false);
 }
 
 async function findRestaurants(){
