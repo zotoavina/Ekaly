@@ -38,8 +38,9 @@ app.use(jwt.authenticateToken.unless({
   path: [
     {url : "/api/user/login", methods: ['POST']},
     {url: "/api/user", methods: ['POST']},
-    {url: "/ekaly/*", methods:['POST', 'GET']},
-    {url: "/ekaly/", methods:['POST', 'GET']}
+    {url: "/ekaly/", methods:['POST', 'GET']},
+    {url: "/ekaly/*", methods:['POST', 'GET']}
+
   ]
 }))
 
