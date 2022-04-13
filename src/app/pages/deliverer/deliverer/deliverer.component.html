@@ -1,7 +1,7 @@
 <section id="menu-6" class="wide-70 menu-section division">
   <div class="container">
       <div class="example-container">
-          <h2>Assigned Orders</h2>
+          <h5>Assigned Orders</h5>
           <div
             cdkDropList
             [cdkDropListData]="orders"
@@ -10,15 +10,22 @@
             id="orders"
             (cdkDropListDropped)="drop($event)">
             <div class="example-box" *ngFor="let item of orders" cdkDrag>
-                <h6>{{item.client.firstname}} </h6>
-                <small>{{item.date}}</small>
-                <small>{{item.totalsellprice}}</small>
+              <div class="card border-primary mb-3" style="width: 20rem;">
+                <div class="card-body text-primary">
+                  <ul>
+                    <li><small><i class="fa fa-user"></i> {{item.client.firstname}} {{item.client.lastname}}</small></li>
+                    <li><small><i class="fa fa-globe"></i> {{item.client.email}}</small></li>
+                    <li><small><i class="fa fa-cost"></i> Prix: {{item.totalsellprice}} Ar</small></li>
+                    <li><small><i class="fa fa-clock"></i> {{item.date | date}}</small></li>
+                  </ul>
+                </div>
+              </div>
            </div>
           </div>
       </div>
 
       <div class="example-container">
-          <h2>In delivering</h2>
+          <h5>In delivering</h5>
           <div
               cdkDropList
               #delivering="cdkDropList"
@@ -28,15 +35,22 @@
               id="delivering"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of ordersDelivering" cdkDrag>
-                  <h6>{{item.client.firstname}} </h6>
-                  <small>{{item.date}}</small>
-                  <small>{{item.totalsellprice}}</small>
-              </div>
+                <div class="card border-warning mb-3" style="width: 20rem;">
+                  <div class="card-body text-warning">
+                    <ul>
+                      <li><small><i class="fa fa-user"></i> {{item.client.firstname}} {{item.client.lastname}}</small></li>
+                      <li><small><i class="fa fa-globe"></i> {{item.client.email}}</small></li>
+                      <li><small><i class="fa fa-cost"></i> Prix: {{item.totalsellprice}} Ar</small></li>
+                      <li><small><i class="fa fa-clock"></i> {{item.date | date}}</small></li>
+                    </ul>
+                  </div>
+                </div>
+                </div>
           </div>
       </div>
 
       <div class="example-container">
-          <h2>Delivered</h2>
+          <h5>Delivered</h5>
           <div
               cdkDropList
               #delivered="cdkDropList"
@@ -46,9 +60,16 @@
               class="example-list"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of ordersDelivered" cdkDrag>
-                  <h6>{{item.client.firstname}} </h6>
-                  <small>{{item.date}}</small>
-                  <small>{{item.totalsellprice}}</small>
+                <div class="card border-success mb-3" style="width: 20rem;">
+                  <div class="card-body text-success">
+                    <ul>
+                      <li><small><i class="fa fa-user"></i> {{item.client.firstname}} {{item.client.lastname}}</small></li>
+                      <li><small><i class="fa fa-globe"></i> {{item.client.email}}</small></li>
+                      <li><small><i class="fa fa-cost"></i> Prix: {{item.totalsellprice}} Ar</small></li>
+                      <li><small><i class="fa fa-clock"></i> {{item.date | date}}</small></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
           </div>
       </div>
