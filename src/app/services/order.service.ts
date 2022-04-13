@@ -29,4 +29,12 @@ export class OrderService {
       return this.dataService.getData('orders/restaurant/'+resto);
     }
 
+    public findDelivererOrders(delivererId: string): Observable<ResponseData>{
+      return this.dataService.getData('orders/deliverer/' + delivererId);
+    }
+
+    public updateOrderStatus(data: any): Observable<ResponseData>{
+      return this.dataService.postData('orders/status', data);
+    }
+
 }

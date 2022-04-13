@@ -16,16 +16,15 @@ async function login({ email, password }) {
 }
 
 
-async function register(params, login = true){
+async function register(params, execLogin = true){
   const {password} = params
   const salt = bcrypt.genSaltSync(10);
   params.password = bcrypt.hashSync(password, salt);
   params.state = 1;
   var profil = new Profil(params)
   profil = await profil.save();
-  if(!login) return profil
+  if(!execLogin) return profil
   profil.password = password;
-  console.log(profil);
   return login(profil);
 }
 

@@ -67,6 +67,9 @@ export class DelevererListComponent implements OnInit {
       if(response.code == 202){
         this.delivererData.delete("avatar");
         this.delivererData.delete("deliverer");
+        let newDeliverer = response.data;
+        newDeliverer.avatar = this.urlService.apiUrl(newDeliverer.avatar, false);
+        this.deliverers.push(newDeliverer);
       }
     })
   }

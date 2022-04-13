@@ -16,6 +16,8 @@ import { PlatlistComponent } from './pages/client/platlist/platlist.component';
 import { ShoppingCartComponent } from './pages/client/shopping-cart/shopping-cart.component';
 import { ToastrModule } from 'ngx-toastr';
 import { OrderComponent } from './pages/restaurant/order/order.component';
+import { DelivererComponent } from './pages/deliverer/deliverer/deliverer.component';
+import { MaterialModule } from './modules/material/material.module';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { OrderComponent } from './pages/restaurant/order/order.component';
     PlatlistComponent,
     DelevererListComponent,
     OrderListComponent,
-    OrderComponent
+    OrderComponent,
+    DelivererComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { OrderComponent } from './pages/restaurant/order/order.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

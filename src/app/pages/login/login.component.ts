@@ -111,6 +111,7 @@ export class LoginComponent implements OnInit {
     if(this.connectedUser?.type === "client") this.router.navigateByUrl(url);
     if(this.connectedUser?.type === "restaurant") this.router.navigate([url + '/', this.connectedUser.id]);
     if(this.connectedUser?.type === "ekaly") this.router.navigateByUrl(url);
+    if(this.connectedUser?.type === "deliverer") this.router.navigateByUrl('/app/deliverer/orders');
   }
 
 }

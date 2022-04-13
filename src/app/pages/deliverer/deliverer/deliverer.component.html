@@ -1,0 +1,59 @@
+<section id="menu-6" class="wide-70 menu-section division">
+  <div class="container">
+      <div class="example-container">
+          <h2>Assigned Orders</h2>
+          <div
+            cdkDropList
+            [cdkDropListData]="orders"
+            [cdkDropListConnectedTo]="[delivering]"
+            class="example-list"
+            id="orders"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of orders" cdkDrag>
+                <h6>{{item.client.firstname}} </h6>
+                <small>{{item.date}}</small>
+                <small>{{item.totalsellprice}}</small>
+           </div>
+          </div>
+      </div>
+
+      <div class="example-container">
+          <h2>In delivering</h2>
+          <div
+              cdkDropList
+              #delivering="cdkDropList"
+              [cdkDropListData]="ordersDelivering"
+              [cdkDropListConnectedTo]="[delivered]"
+              class="example-list"
+              id="delivering"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of ordersDelivering" cdkDrag>
+                  <h6>{{item.client.firstname}} </h6>
+                  <small>{{item.date}}</small>
+                  <small>{{item.totalsellprice}}</small>
+              </div>
+          </div>
+      </div>
+
+      <div class="example-container">
+          <h2>Delivered</h2>
+          <div
+              cdkDropList
+              #delivered="cdkDropList"
+              [cdkDropListData]="ordersDelivered"
+              [cdkDropListConnectedTo]="[delivered]"
+              id="delivered"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of ordersDelivered" cdkDrag>
+                  <h6>{{item.client.firstname}} </h6>
+                  <small>{{item.date}}</small>
+                  <small>{{item.totalsellprice}}</small>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+

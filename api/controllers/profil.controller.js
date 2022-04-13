@@ -19,9 +19,11 @@ const profilController = (url , router) => {
       (profil) => {
         console.log("Registration ok");
         response.success(res, profil, "Registration success")
-
       }
-    ).catch( err => response.error(res, "An error occured during the registration") );
+    ).catch( err => {
+      console.log(err);
+      response.error(res, "An error occured during the registration");
+     } );
   })
 
   // find profil  by id

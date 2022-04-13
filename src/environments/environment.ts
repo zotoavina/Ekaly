@@ -12,6 +12,12 @@ export const baseUrl = {
 };
 
 
+export const OrderStatus = {
+  order : 0,
+  delivering : 1,
+  delivered : 2
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
