@@ -44,7 +44,6 @@ export class DelivererComponent implements OnInit {
     this.user = this.storageServ.getStorage("profil");
     this.orderSrev.findDelivererOrders(this.user.id).subscribe((res: ResponseData) => {
       if(res.code === 202){
-        console.log(res.data);
         let str = JSON.stringify(res.data);
         const ordersTemp = JSON.parse(str);
         this.orders  = ordersTemp.filter((order: any) => order.status === OrderStatus.order);
@@ -55,14 +54,12 @@ export class DelivererComponent implements OnInit {
   }
 
   setStatus(containerId: string, data: any, index: number){
-    console.log(data);
     if(containerId === "delivering") this.setDelivering(index, data);
     if(containerId === "delivered") this.setDelivered(index, data);
   }
 
   setDelivering(index: number,data: any){
     let status = {orderId: data[index].id, status: OrderStatus.delivering};
-    console.log(status);
     this.orderSrev.updateOrderStatus(status).subscribe((res: ResponseData) => {
       console.log(res);
     });
@@ -71,7 +68,6 @@ export class DelivererComponent implements OnInit {
 
   setDelivered(index: number,data: any){
     let status = {orderId: data[index].id, status: OrderStatus.delivered};
-    console.log(status);
     this.orderSrev.updateOrderStatus(status).subscribe((res: ResponseData) => {
       console.log(res);
     });
