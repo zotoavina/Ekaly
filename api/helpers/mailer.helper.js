@@ -14,7 +14,7 @@ var transporter = nodemailer.createTransport({
 });
 
 
-function sendMail(mailOptions){
+async function sendMail(mailOptions){
   mailOptions.from =  'ekalyapp@gmail.com';
   mailOptions.subject =  'Livraison Commande';
   mailOptions.text =  'Votre commande est en cours de livraison';

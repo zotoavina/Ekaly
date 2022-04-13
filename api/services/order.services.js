@@ -1,4 +1,5 @@
 const { Order, OrderSchema}  = require('../modals/order.modals');
+const mailHelper = require('../helpers/mailer.helper');
 
 async function saveOrder(orderParam){
   orderParam.status = 0;
@@ -32,6 +33,10 @@ async function updateStatusOrder(orderId, status){
   console.log(status);
   getById(orderId).then( (order) => {
     console.log(order);
+    var mailOption = {
+      to: order.client.email
+    };
+    mailHelper.sendMail(mailOption);
     order.status = status;
     order.save();
     return order;
