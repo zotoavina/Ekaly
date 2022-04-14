@@ -6,7 +6,7 @@ const jwt = require('../../helpers/jwt.helper');
 const errorHanlder = require('../../helpers/errorHandler.helper');
 const app = express();
 
-jwt.authenticateToken.unless = expressUnless;
+// jwt.authenticateToken.unless = expressUnless;
 
 app.use( cors() );
 app.use((req, res, next) => {
@@ -34,15 +34,15 @@ app.use(fileUpload({
 app.use('/uploads', express.static('uploads'));
 app.use(express.static('dist/ekaly-front'));
 
-app.use(jwt.authenticateToken.unless({
-  path: [
-    {url : "/api/user/login", methods: ['POST']},
-    {url: "/api/user", methods: ['POST']},
-    {url: "/ekaly/", methods:['POST', 'GET']},
-    {url: "/ekaly/*", methods:['POST', 'GET']}
+// app.use(jwt.authenticateToken.unless({
+//   path: [
+//     {url : "/api/user/login", methods: ['POST']},
+//     {url: "/api/user", methods: ['POST']},
+//     {url: "/ekaly/", methods:['POST', 'GET']},
+//     {url: "/ekaly/*", methods:['POST', 'GET']}
 
-  ]
-}))
+//   ]
+// }))
 
 app.use(errorHanlder.errorHandler);
 
